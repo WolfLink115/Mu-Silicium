@@ -223,85 +223,8 @@ CHAR8 *mEnclosureInfoType3Strings[] = {
 /***********************************************************************
     SMBIOS data definition  TYPE4  Processor Information
 ************************************************************************/
-SMBIOS_TABLE_TYPE4 mProcessorInfoType4_a73 = {
-  {EFI_SMBIOS_TYPE_PROCESSOR_INFORMATION, sizeof(SMBIOS_TABLE_TYPE4), 0},
-  1,                               // Socket String
-  CentralProcessor,                // ProcessorType
-  ProcessorFamilyIndicatorFamily2, // ProcessorFamily
-  2,                               // ProcessorManufacture String
-  {
-   {
-     0, // ProcessorSteppingId
-     0, // ProcessorModel
-     0, // ProcessorFamily
-     0, // ProcessorType
-     0, // ProcessorReserved1
-     0, // ProcessorXModel
-     0, // ProcessorXFamily
-     0, // ProcessorReserved2
-   },
-   {
-     0, // ProcessorFpu
-     0, // ProcessorVme
-     0, // ProcessorDe
-     0, // ProcessorPse
-     0, // ProcessorTsc
-     0, // ProcessorMsr
-     0, // ProcessorPae
-     0, // ProcessorMce
-     0, // ProcessorCx8
-     0, // ProcessorApic
-     0, // ProcessorReserved1
-     0, // ProcessorSep
-     0, // ProcessorMtrr
-     0, // ProcessorPge
-     0, // ProcessorMca
-     0, // ProcessorCmov
-     0, // ProcessorPat
-     0, // ProcessorPse36
-     0, // ProcessorPsn
-     0, // ProcessorClfsh
-     0, // ProcessorReserved2
-     0, // ProcessorDs
-     0, // ProcessorAcpi
-     0, // ProcessorMmx
-     0, // ProcessorFxsr
-     0, // ProcessorSse
-     0, // ProcessorSse2
-     0, // ProcessorSs
-     0, // ProcessorReserved3
-     0, // ProcessorTm
-     0, // ProcessorReserved4
-    }
-  },
-  3, // ProcessorVersion String
-  {
-    0, // ProcessorVoltageCapability5V
-    0, // ProcessorVoltageCapability3_3V
-    0, // ProcessorVoltageCapability2_9V
-    0, // ProcessorVoltageCapabilityReserved
-    0, // ProcessorVoltageReserved
-    0  // ProcessorVoltageIndicateLegacy
-  },
-  0,                     // ExternalClock
-  2150,                  // MaxSpeed
-  2150,                  // CurrentSpeed
-  0x41,                  // Status
-  ProcessorUpgradeOther, // ProcessorUpgrade
-  0,                     // L1CacheHandle
-  0,                     // L2CacheHandle
-  0,                     // L3CacheHandle
-  0,                     // SerialNumber
-  0,                     // AssetTag
-  4,                     // PartNumber
-  2,                     // CoreCount
-  2,                     // EnabledCoreCount
-  2,                     // ThreadCount
-  0xAC,                  // ProcessorCharacteristics
-  ProcessorFamilyARM,    // ARM Processor Family
-};
 
-SMBIOS_TABLE_TYPE4 mProcessorInfoType4_a53 = {
+SMBIOS_TABLE_TYPE4 mProcessorInfoType4_kryo = {
   {EFI_SMBIOS_TYPE_PROCESSOR_INFORMATION, sizeof(SMBIOS_TABLE_TYPE4), 0},
   1,                               // Socket String
   CentralProcessor,                // ProcessorType
@@ -390,39 +313,8 @@ CHAR8 *mProcessorInfoType4Strings[] = {
 /***********************************************************************
     SMBIOS data definition  TYPE7  Cache Information
 ************************************************************************/
-SMBIOS_TABLE_TYPE7 mCacheInfoType7_L1IC_a73 = {
-  {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
-  1,      // SocketDesignation String
-  0x0280, // Cache Configuration
-  0x0040, // Maximum Size
-  0x0040, // Install Size
-  {
-    0, // Other
-    0, // Unknown
-    0, // NonBurst
-    0, // Burst
-    0, // PiplelineBurst
-    0, // Synchronous
-    0, // Asynchronous
-    0  // Reserved
-  },
-  {
-    0, // Other
-    0, // Unknown
-    0, // NonBurst
-    0, // Burst
-    0, // PiplelineBurst
-    0, // Synchronous
-    0, // Asynchronous
-    0  // Reserved
-  },
-  0,                      // Cache Speed unknown
-  CacheErrorParity,       // Error Correction Multi
-  CacheTypeInstruction,   // System Cache Type
-  CacheAssociativity16Way // Associativity
-};
 
-SMBIOS_TABLE_TYPE7 mCacheInfoType7_L1IC_a53 = {
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_L1IC_kryo = {
   {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
   1,      // SocketDesignation String
   0x0280, // Cache Configuration
@@ -454,39 +346,7 @@ SMBIOS_TABLE_TYPE7 mCacheInfoType7_L1IC_a53 = {
   CacheAssociativity16Way // Associativity
 };
 
-SMBIOS_TABLE_TYPE7 mCacheInfoType7_L1DC_a73 = {
-  {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
-  1,      // SocketDesignation String
-  0x0280, // Cache Configuration
-  0x0040, // Maximum Size
-  0x0040, // Install Size
-  {
-    0, // Other
-    0, // Unknown
-    0, // NonBurst
-    0, // Burst
-    0, // PiplelineBurst
-    0, // Synchronous
-    0, // Asynchronous
-    0  // Reserved
-  },
-  {
-    0, // Other
-    0, // Unknown
-    0, // NonBurst
-    0, // Burst
-    0, // PiplelineBurst
-    0, // Synchronous
-    0, // Asynchronous
-    0  // Reserved
-  },
-  0,                      // Cache Speed unknown
-  CacheErrorParity,       // Error Correction Multi
-  CacheTypeData,          // System Cache Type
-  CacheAssociativity16Way // Associativity
-};
-
-SMBIOS_TABLE_TYPE7 mCacheInfoType7_L1DC_a53 = {
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_L1DC_kryo = {
   {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
   1,      // SocketDesignation String
   0x0280, // Cache Configuration
@@ -518,39 +378,7 @@ SMBIOS_TABLE_TYPE7 mCacheInfoType7_L1DC_a53 = {
   CacheAssociativity16Way // Associativity
 };
 
-SMBIOS_TABLE_TYPE7 mCacheInfoType7_L2C_a73 = {
-  {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
-  1,      // SocketDesignation String
-  0x0281, // Cache Configuration
-  0x0800, // Maximum Size
-  0x0800, // Install Size
-  {
-    0, // Other
-    0, // Unknown
-    0, // NonBurst
-    0, // Burst
-    0, // PiplelineBurst
-    0, // Synchronous
-    0, // Asynchronous
-    0  // Reserved
-  },
-  {
-    0, // Other
-    0, // Unknown
-    0, // NonBurst
-    0, // Burst
-    0, // PiplelineBurst
-    0, // Synchronous
-    0, // Asynchronous
-    0  // Reserved
-  },
-  0,                     // Cache Speed unknown
-  CacheErrorParity,      // Error Correction Multi
-  CacheTypeUnified,      // System Cache Type
-  CacheAssociativity8Way // Associativity
-};
-
-SMBIOS_TABLE_TYPE7 mCacheInfoType7_L2C_a53 = {
+SMBIOS_TABLE_TYPE7 mCacheInfoType7_L2C_kryo = {
   {EFI_SMBIOS_TYPE_CACHE_INFORMATION, sizeof(SMBIOS_TABLE_TYPE7), 0},
   1,      // SocketDesignation String
   0x0281, // Cache Configuration

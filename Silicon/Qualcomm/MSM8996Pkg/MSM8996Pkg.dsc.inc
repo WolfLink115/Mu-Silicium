@@ -35,16 +35,21 @@
   gArmTokenSpaceGuid.PcdArmArchTimerHypIntrNum|10
 
   # GIC
-  gArmTokenSpaceGuid.PcdGicDistributorBase|0x9bc0000
-  gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x9c00000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x9c00000
+  gArmTokenSpaceGuid.PcdGicDistributorBase|0x9BC0000
+  gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x9C00000
+  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x9C00000
 
   # ACPI
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x00008996
 
   # SmBios
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 820/821 @ 2.15 GHz"
+!if $(SOC_TYPE) == 0
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 820 @ 2.15 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorRetailModel|"MSM8996"
+!elseif $(SOC_TYPE) == 1
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 821 @ 2.40 GHz"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorRetailModel|"MSM8996Pro"
+!endif
 
   # CPU
   gArmPlatformTokenSpaceGuid.PcdCoreCount|4

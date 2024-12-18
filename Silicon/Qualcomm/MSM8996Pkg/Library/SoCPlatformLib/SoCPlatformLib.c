@@ -25,8 +25,8 @@ mArmPlatformMpCoreInfoTable[] = {
     (UINT64)0xFFFFFFFF
   },
   {
-    // Cluster 1, Core 0
-    0x100,
+    // Cluster 0, Core 2
+    0x002,
 
     // MP Core MailBox Set/Get/Clear Addresses and Clear Value
     (EFI_PHYSICAL_ADDRESS)0,
@@ -35,15 +35,15 @@ mArmPlatformMpCoreInfoTable[] = {
     (UINT64)0xFFFFFFFF
   },
   {
-    // Cluster 1, Core 1
-    0x101,
+    // Cluster 0, Core 3
+    0x003,
 
     // MP Core MailBox Set/Get/Clear Addresses and Clear Value
     (EFI_PHYSICAL_ADDRESS)0,
     (EFI_PHYSICAL_ADDRESS)0,
     (EFI_PHYSICAL_ADDRESS)0,
     (UINT64)0xFFFFFFFF
-  },
+  }
 };
 
 ARM_CORE_INFO*
