@@ -314,11 +314,11 @@
 
 <img align="right" src="Resources/Pictures/Xiaomi-Mi-11.png" width="500" alt="Preview">
 
-**State: Inactive** <br>
+**State: Active** <br>
 **Codename: venus** <br>
-**Maintainer: [Daniel224455/Daniel6745](https://github.com/Daniel224455/)** <br>
+**Maintainer: [Daniel224455](https://github.com/Daniel224455/)** <br>
 **Contributors: [Robotix](https://github.com/Robotix22/)** <br>
-**Tester: [Daniel224455/Daniel6745](https://github.com/Daniel224455/)**
+**Tester: [Daniel224455](https://github.com/Daniel224455/)**
 
 ### UEFI Status
 
@@ -331,7 +331,7 @@
 | USB Device Mode    |                   | ❌    |
 | USB Power Delivery |                   | ❌    |
 | Mass Storage       | Needs Device Mode | ❌    |
-| Windows Boot       | Windows PE only   | ⚠️    |
+| Windows Boot       |                   | ✅    |
 | Linux Boot         |                   | ❌    |
 
 ### OS Status
@@ -342,8 +342,8 @@
 
 | Feature               | Description | State |
 |:----------------------|:------------|:-----:|
-| Internal Storage      |             | ❌    |
-| Side Buttons          |             | ❌    |
+| Internal Storage      |             | ✅    |
+| Side Buttons          |             | ✅    |
 | Proximity Sensor      |             | ❌    |
 | Light Sensor          |             | ❌    |
 | Accelerometer Sensor  |             | ❌    |
@@ -357,7 +357,7 @@
 | NFC Sensor            |             | ❌    |
 | Temperature Sensor    |             | ❌    |
 | Battery               |             | ❌    |
-| USB Host Mode         |             | ❌    |
+| USB Host Mode         |             | ✅    |
 | USB Device Mode       |             | ❌    |
 | USB Power Delivery    |             | ❌    |
 | Charging              |             | ❌    |
@@ -1049,6 +1049,67 @@
 | Flashlight           | Accessible only from Windows Camera, acts like a stroboscope | ⚠    |
 | Camera               |                                                              | ❌    |
 | Mobile Data          |                                                              | ✅️    |
+| Display              |                                                              | ✅    |
+| Vibration            |                                                              | ❌    |
+
+</td></tr> </table>
+
+## Xiaomi Pad 5
+
+<img align="right" src="Resources/Pictures/Xiaomi-Pad-5.png" width="500" alt="Preview">
+
+**State: Active** <br>
+**Codename: nabu** <br>
+**Maintainers: [iNUCi](https://github.com/iNUCi)** <br>
+**Contributors: [iNUCi](https://github.com/iNUCi)** <br>
+**Testers: [iNUCi](https://github.com/iNUCi)**
+
+### UEFI Status
+
+| Feature            | Description | State |
+|:-------------------|:------------|:-----:|
+| Display            |             | ✅    |
+| Internal Storage   |             | ✅    |
+| Side Buttons       |             | ✅    |
+| USB Host Mode      |             | ❌    |
+| USB Device Mode    |             | ✅    |
+| USB Power Delivery |             | ❌    |
+| Mass Storage       |             | ✅    |
+| Windows Boot       |             | ✅    |
+| Linux Boot         | Untested    | ❔    |
+
+### OS Status
+
+<table>
+<tr><th>Windows</th></tr>
+<tr><td>
+
+> NOTE: Needs [Windows Drivers](https://github.com/erdilS/Port-Windows-11-Xiaomi-Pad-5/releases/tag/Drivers/latest)!
+
+| Feature              | Description                                                  | State |
+|:---------------------|:-------------------------------------------------------------|:-----:|
+| Internal Storage     |                                                              | ✅    |
+| Side Buttons         |                                                              | ✅    |
+| Proximity Sensor     |                                                              | ❌    |
+| Accelerometer Sensor |                                                              | ✅    |
+| Compass Sensor       |                                                              | ❌    |
+| Gyroscope Sensor     |                                                              | ❌    |
+| Fingerprint Sensor   |                                                              | ❌    |
+| NFC Sensor           |                                                              | ❌    |
+| Temperature Sensor   |                                                              | ❔    |
+| Battery              |                                                              | ✅    |
+| USB                  |                                                              | ✅    |
+| Charging             | Very slow                                                    | ⚠️    |
+| WLAN                 |                                                              | ✅    |
+| CPU                  |                                                              | ✅    |
+| Touchscreen          |                                                              | ✅    |
+| Bluetooth            |                                                              | ✅    |
+| GPS                  |                                                              | ✅    |
+| Speakers             |                                                              | ✅    |
+| Microphone           |                                                              | ✅    |
+| GPU                  |                                                              | ✅    |
+| Flashlight           |                                                              | ⚠    |
+| Camera               |                                                              | ❌    |
 | Display              |                                                              | ✅    |
 | Vibration            |                                                              | ❌    |
 
