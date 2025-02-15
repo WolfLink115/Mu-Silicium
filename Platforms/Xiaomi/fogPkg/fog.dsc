@@ -55,7 +55,7 @@
   gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000
 
   # SmBios
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemVendor|"Xiaomi Inc"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi Inc"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Redmi 10C"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"fog"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Redmi_10C_fog"
@@ -68,6 +68,7 @@
 
   # Platform Pei
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
+  gQcomPkgTokenSpaceGuid.PcdScheduleInterfaceAddr|0x5FC36648
 
   # Dynamic RAM Start Address
   gQcomPkgTokenSpaceGuid.PcdRamPartitionBase|0x80000000

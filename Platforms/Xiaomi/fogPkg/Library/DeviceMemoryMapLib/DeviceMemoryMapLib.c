@@ -3,7 +3,7 @@
 STATIC
 ARM_MEMORY_REGION_DESCRIPTOR_EX
 gDeviceMemoryDescriptorEx[] = {
-  // Name, Address, Length, HobOption, ResourceAttribute, ArmAttributes, ResourceType, MemoryType
+  // Name, Address, Length, HobOption, ResourceType, ResourceAttribute, MemoryType, ArmAttribute
 
   // DDR Regions
   {"RAM Partition",         0x40000000, 0x01AC0000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
@@ -29,7 +29,8 @@ gDeviceMemoryDescriptorEx[] = {
   {"RAM Partition",         0x5D400000, 0x02400000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
   {"FV Region",             0x5F800000, 0x00200000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
   {"RAM Partition",         0x5FA00000, 0x00200000, AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK_XN},
-  {"UEFI FD",               0x5FC00000, 0x00300000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
+  {"FD Reserved",           0x5FC00000, 0x00100000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
+  {"UEFI FD",               0x5FD00000, 0x00200000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
   {"SEC Heap",              0x5FF00000, 0x0008C000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
   {"CPU Vectors",           0x5FF8C000, 0x00001000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
   {"MMU PageTables",        0x5FF8D000, 0x00003000, AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK_XN},
