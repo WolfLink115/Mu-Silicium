@@ -23,71 +23,64 @@
   BUILD_TARGETS                  = RELEASE|DEBUG
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = pongPkg/pong.fdf
-  USE_CUSTOM_DISPLAY_DRIVER      = 0
-  HAS_BUILD_IN_KEYBOARD          = 0
+  USE_CUSTOM_DISPLAY_DRIVER      = 1
 
   #
-  # 0 = SM8450
-  # 1 = SM8475
+  # 0 = SM8475
+  # 1 = SM8475-AB
+  # 2 = SM7475-AB
   #
   SOC_TYPE                       = 1
 
-[BuildOptions]
-  *_*_*_CC_FLAGS = -DSOC_TYPE=$(SOC_TYPE) -DHAS_BUILD_IN_KEYBOARD=$(HAS_BUILD_IN_KEYBOARD)
-
-[LibraryClasses]
-  DeviceMemoryMapLib|pongPkg/Library/DeviceMemoryMapLib/DeviceMemoryMapLib.inf
-  DeviceConfigurationMapLib|pongPkg/Library/DeviceConfigurationMapLib/DeviceConfigurationMapLib.inf
-  DevicePrePiLib|pongPkg/Library/DevicePrePiLib/DevicePrePiLib.inf
+!include PalimaPkg/PalimaPkg.dsc.inc
 
 [PcdsFixedAtBuild]
-  # DDR Start Address
+  #
+  # DDR Memory
+  #
   gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
 
-  # Device Maintainer
-  gSiliciumPkgTokenSpaceGuid.PcdDeviceMaintainer|"index986"
+  #
+  # UEFI Stack
+  #
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0xA760D000
+  gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
-  # CPU Vector Address
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0xA7600000
-
-  # UEFI Stack Addresses
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0xA760D000
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000
-
-  # SmBios
+  #
+  # SMBIOS
+  #
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Nothing"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Phone 2"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"pong"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Phone_2_pong"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Phone 2"
 
-  # Simple FrameBuffer
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2412
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferColorDepth|32
+  #
+  # Simple Frame Buffer
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth|1080
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight|2412
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
 
-  # Platform Pei
+  #
+  # Platform PEI
+  #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdScheduleInterfaceAddr|0xA703C920
-  gQcomPkgTokenSpaceGuid.PcdDTBExtensionAddr|0xA703C0C8
+  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703C920
+  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0C8
 
-  # Dynamic RAM Start Address
-  gQcomPkgTokenSpaceGuid.PcdRamPartitionBase|0xFFC00000
-
-  # SD Card Slot
+  #
+  # Storage
+  #
   gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-  
-  # USB Controller
-  gQcomPkgTokenSpaceGuid.PcdStartUsbController|TRUE
 
-[PcdsDynamicDefault]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2412
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2412
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|126
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|126
+[LibraryClasses]
+  #
+  # Memory Libraries
+  #
+  MemoryMapLib|pongPkg/Library/MemoryMapLib/MemoryMapLib.inf
 
-!include SM8450Pkg/SM8450Pkg.dsc.inc
+  #
+  # QCOM Libraries
+  #
+  ConfigurationMapLib|pongPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf

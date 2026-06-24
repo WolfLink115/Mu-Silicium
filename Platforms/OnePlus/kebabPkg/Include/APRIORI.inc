@@ -1,5 +1,4 @@
 APRIORI DXE {
-  # First, install the PCD driver and call DxeInit
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
@@ -8,19 +7,12 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-
-  # Next, install cpu protocol and enable the interrupt controller
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-
-  # Core Drivers
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/kebab/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/kebab/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -34,9 +26,6 @@ APRIORI DXE {
   INF Binaries/kebab/QcomPkg/Drivers/PdcDxe/PdcDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/kebab/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/ShmBridgeDxe/ShmBridgeDxeLA.inf
   INF Binaries/kebab/QcomPkg/Drivers/TzDxe/ScmDxeLA.inf
@@ -105,6 +94,8 @@ APRIORI DXE {
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
+  INF Binaries/kebab/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf
+  INF Binaries/kebab/QcomPkg/Drivers/UsbDeviceDxe/UsbDeviceDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/UsbConfigDxe/UsbConfigDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/TsensDxe/TsensDxe.inf

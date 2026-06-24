@@ -1,93 +1,85 @@
 # Building
 
-*Recommended Linux OS: Ubuntu 22.04.3 LTS*
-*Or use the docker method*
+> [!TIP]
+> For the Compilation, a Linux OS is recommended.
 
-## If using docker method
+## Cloning the Source Code
 
-### Step 1:
-
-First of you need the sourcecode to compile a UEFI Image. <br />
-Clone the Repo by using:
+To Compile this UEFI Project in the first Place, You have to Download the Source Code. <br>
+You can do this by using the `git` Command:
 ```
 git clone https://github.com/Project-Silicium/Mu-Silicium.git --recursive
-cd Mu-Silicium
+```
+The entire Source is about ~5GB in Size, so the Download Time depends on your Internet Speed and Storage Speed.
+At the End you should see a new Folder called `Mu-Silicium`.
+
+## Platform Specific Steps
+
+<details>
+<summary>Windows</summary>
+
+## Requirements
+  - [Git](https://git-scm.com/install/windows)
+  - [Python](https://www.python.org/downloads/) Version 3.11 or higher
+  - [LLVM](https://github.com/llvm/llvm-project/releases/)
+  - [VS Build Tools](https://aka.ms/vs/stable/vs_BuildTools.exe)
+  - [GnuMake32](https://gnuwin32.sourceforge.net/packages/make.htm)
+
+## Setting Up PATH
+
+Since GnuMake32 doesn't add itself to PATH, you have to add it manually. <br>
+You can Update the PATH Variable using UI in Windows, Simply Enter "Path" in your Search Bar. <br>
+Once you Open the Window, Go to System PATH and add two new Entries.
+
+The Entry should Point to the Install `bin` Folder of GnuMake32. <br>
+The Install Location Depends on what Path you Extracted it to.
+
+## Installing pip Dependencies
+
+Before you can Start to Compile this UEFI Project, You have to Install the pip Dependencies. <br>
+Open a Command Prompt Window in the same Folder as the Source Code. <br>
+Once you did that, Run this Command to Install all pip Dependencies:
+```cmd
+python3 -m pip install -r pip-requirements.txt
 ```
 
-You need to have `git` installed.
+---
 
-### Step 2
+</details>
 
-After the clone is done, proceed to open a shell/powershell/terminal inside the clone location
-For Linux/MacOS/BSD users, run:
+<details>
+<summary>Linux</summary>
+
+## Installing Dependencies
+
+Before you can Start to Compile this UEFI Project, You have to Install the Dependencies. <br>
+Open a Terminal in the same Folder as the Source Code. <br>
+Once you did that, Run this Command to Install all Dependencies:
+```bash
+./setup_env.sh -p [PACKAGE_MANAGER_NAME]
 ```
-./docker-build.sh "-d <Codename> [-r <Build Mode>]"
+The `[PACKAGE_MANAGER_NAME]` Argument here is the Name of your Distro Package Manager. <br>
+For Example, for Ubuntu or Debian users the Name would be `apt`.
+
+</details>
+
+## Compiling UEFI
+
+> [!IMPORTANT]
+> Depending on your Python Install, You might have to use `python` instead of `python3`.
+
+After you have Done all the Steps from before, You're now ready to Compile UEFI with this Command:
 ```
-You need the "double quotes"
-
-For Windows users, run (not tested):
+python3 build_uefi.py -d [DEVICE_CODENAME]
 ```
-.\docker-build.cmd "-d <Codename> [-r <Build Mode>]"
+The `[DEVICE_CODENAME]` Argument here is the Codename of your Device. <br>
+You can Find the Codename of the Device in the [Status Page](Status.md).
+
+# Updating
+
+Since this is an Open Source Project, There will be some Updates from Time to Time. <br>
+To get these new Updates and Changes you can use `git` again in the Project Folder to Update your Local Copy:
 ```
-You need the "double quotes".
-
-When the Build is Done, You will Find one of these Files: `.img`, `.tar` or `.bin`.
-
-## If building natively
-
-### Step 1:
-
-First of you need the sourcecode to compile a UEFI Image. <br />
-Clone the Repo by using:
+git pull
+git submodule update
 ```
-git clone https://github.com/Project-Silicium/Mu-Silicium.git --recursive
-cd Mu-Silicium
-```
-
-### Step 2:
-
-After Cloning the repo we can now continue on Setting up the Environment. <br />
-First we need to install the needed Packages:
-```
-./setup_env.sh -p <Package Manager>
-```
-
-### Step 3:
-
-So now we are able to begin the real UEFI build:
-```
-./build_uefi.sh -d <Codename> [-r <Build Mode>]
-```
-
-When the Build is Done, You will Find one of these Files: `.img`, `.tar` or `.bin`.
-
-## Troubleshooting:
-
-### Python Requirements:
-
-   1. You may encounter an issue That the required package is not satisfied or something, If your Python Version is lower than 3.10 install Python 3.10 or newer
-   2. After installing Python 3.10 Linux won't automatically chose Python 3.10 as default, To set it as default use these commands:
-      ```
-      sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
-      sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
-      ```
-   3. Now check the Python Version:
-      ```
-      python3 --version
-      ```
-      You should get this output:
-      ```
-      Python 3.10.*
-      ```
-
-### Git Unknown Switch
-
-   1. If you have an old Version of git you may come across this Issue, So you need to install the latest version of git.
-   2. I prefer using `apt` to update git but if it tells you it is already newest version you should follow [this](https://www.fosslinux.com/64522/install-git-debian-linux.htm) Guide
-
-### Fedora No ARM Toolchain
-
-   1. Newer Fedora Releases don't have gnueabihf ARM Toolchains, So we will use an external Repo to get that Package.
-   2. Run this Command: `sudo dnf copr enable lantw44/arm-linux-gnueabihf-toolchain` to Enable the external Repo.
-   3. If you are above Fedora 39, You will need `libgnat-13.3.1-1` from [here](https://koji.fedoraproject.org/koji/buildinfo?buildID=2454974)
-   4. Then you can just `Run the setup_env.sh` Script again. (You might have to restart your Terminal)

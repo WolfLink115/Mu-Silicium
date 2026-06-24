@@ -1,6 +1,8 @@
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
+
   INF Binaries/lisa/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
+
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
@@ -23,7 +25,7 @@
   INF Binaries/lisa/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/lisa/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -40,9 +42,6 @@
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
   INF Binaries/lisa/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/lisa/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/I2CDxe/I2CDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
@@ -57,9 +56,6 @@
   INF Binaries/lisa/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/ICBDxe/ICBDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
   INF EmbeddedPkg/SimpleTextInOutSerial/SimpleTextInOutSerial.inf
   INF MdeModulePkg/Universal/PrintDxe/PrintDxe.inf
@@ -76,7 +72,6 @@
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/lisa/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
-  INF QcomPkg/Drivers/DisplayReEnablerDxe/DisplayReEnablerDxe.inf
 !else
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
@@ -98,7 +93,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/lisa/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf
@@ -109,8 +103,6 @@
   INF Binaries/lisa/QcomPkg/Drivers/RNGDxe/RngDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/PILDxe/PILDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/PILProxyDxe/PILProxyDxe.inf
-  INF Binaries/lisa/QcomPkg/Drivers/SecRSADxe/SecRSADxe.inf
-  INF Binaries/lisa/QcomPkg/Drivers/ASN1X509Dxe/ASN1X509Dxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/FvUtilsDxe/FvUtilsDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/ParserDxe/ParserDxe.inf
   INF Binaries/lisa/QcomPkg/Drivers/SerialPortDxe/SerialPortDxe.inf

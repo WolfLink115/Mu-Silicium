@@ -9,7 +9,6 @@
 
   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
   INF MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf
-
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf
@@ -30,15 +29,12 @@
   INF Binaries/citrus/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/QcomMpmTimerDxe/QcomMpmTimerDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/citrus/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/GLinkDxe/GLinkDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/citrus/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
 
@@ -50,9 +46,6 @@
   INF Binaries/citrus/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/citrus/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/GpiDxe/GpiDxe.inf

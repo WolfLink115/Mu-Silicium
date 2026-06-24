@@ -28,14 +28,11 @@
   INF Binaries/kebab/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/kebab/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/kebab/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
@@ -53,9 +50,6 @@
 
   INF Binaries/kebab/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/kebab/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
@@ -66,7 +60,7 @@
   INF Binaries/kebab/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/UFSDxe/UFSDxe.inf
   INF Binaries/kebab/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
-  #INF Binaries/kebab/QcomPkg/Drivers/FeatureEnablerDxe/FeatureEnablerDxe.inf
+  INF Binaries/kebab/QcomPkg/Drivers/FeatureEnablerDxe/FeatureEnablerDxe.inf
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/kebab/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
@@ -90,7 +84,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/kebab/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

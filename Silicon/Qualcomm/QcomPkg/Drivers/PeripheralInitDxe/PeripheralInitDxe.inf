@@ -20,12 +20,11 @@
   UefiBootServicesTableLib
 
 [FixedPcd]
-  gQcomPkgTokenSpaceGuid.PcdStartUsbController
   gQcomPkgTokenSpaceGuid.PcdInitCardSlot
 
 [Guids]
   gUsbControllerInitGuid
-  gSDCardInitGuid
+  gSdCardInitGuid
 
 [Depex]
   TRUE

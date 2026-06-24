@@ -1,8 +1,4 @@
-  FILE FREEFORM = A91D838E-A5FA-4138-825D-455E2303079E {
-    SECTION UI = "BDS_Menu.cfg"
-    SECTION RAW = Binaries/fog/RawFiles/BDS_Menu.cfg
-  }
-
+!if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   FILE FREEFORM = C0DECCE0-BD15-480F-BD18-5FF4C530176C {
     SECTION UI = "Panel_c3q_35_02_0a_fhdp_video.xml"
     SECTION RAW = Binaries/fog/RawFiles/Panel_c3q_35_02_0a_fhdp_video.xml
@@ -37,6 +33,7 @@
     SECTION UI = "Panel_nt36672e_fhd_plus_90hz_vid.xml"
     SECTION RAW = Binaries/fog/RawFiles/Panel_nt36672e_fhd_plus_90hz_vid.xml
   }
+!endif
 
   FILE FREEFORM = A1E235DE-E825-4591-9623-C43175811826 {
     SECTION UI = "SecParti.cfg"

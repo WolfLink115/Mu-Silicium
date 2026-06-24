@@ -1,3 +1,4 @@
+!if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   FILE FREEFORM = 8CAE2C55-FC5A-410B-812B-8CA22F572F36 {
     SECTION UI = "Panel_truly_wqxga_dsc_cmd.xml"
     SECTION RAW = Binaries/r9qb2/RawFiles/Panel_truly_wqxga_dsc_cmd.xml
@@ -127,6 +128,7 @@
     SECTION UI = "Panel_secondary_r66451_fhd_plus_dsc_cmd.xml"
     SECTION RAW = Binaries/r9qb2/RawFiles/Panel_secondary_r66451_fhd_plus_dsc_cmd.xml
   }
+!endif
 
   FILE FREEFORM = 21E9BDD9-6C3F-4F10-84A5-BBEC322741F1 {
     SECTION UI = "uefipil.cfg"
@@ -141,9 +143,4 @@
   FILE FREEFORM = F780C779-DD7C-47CD-BD1A-5EB414C51704 {
     SECTION UI = "BATTERY.PROVISION"
     SECTION RAW = Binaries/r9qb2/RawFiles/BATTERY.PROVISION
-  }
-
-  FILE FREEFORM = A91D838E-A5FA-4138-825D-455E2303079E {
-    SECTION UI = "BDS_Menu.cfg"
-    SECTION RAW = Binaries/r9qb2/RawFiles/BDS_Menu.cfg
   }

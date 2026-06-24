@@ -18,7 +18,7 @@
 #
 ################################################################################
 
-[FD.i005d_UEFI]
+[FD.SILICIUM_UEFI]
 BaseAddress   = $(FD_BASE)|gArmTokenSpaceGuid.PcdFdBaseAddress # The base address of the FLASH Device.
 Size          = $(FD_SIZE)|gArmTokenSpaceGuid.PcdFdSize        # The size in bytes of the FLASH Device
 ErasePolarity = 1
@@ -59,7 +59,7 @@ FV = FVMAIN_COMPACT
 ################################################################################
 
 [FV.FvMain]
-FvNameGuid         = 631008B0-B2D1-410A-8B49-2C5C4D8ECC7E
+FvNameGuid         = CD8D4C84-20AD-4073-8A28-3400FAE05941
 BlockSize          = 0x1000
 NumBlocks          = 0        # This FV gets compressed so make it just big enough
 FvAlignment        = 8        # FV alignment and FV attributes setting.
@@ -119,12 +119,7 @@ READ_STATUS        = TRUE
 READ_LOCK_CAP      = TRUE
 READ_LOCK_STATUS   = TRUE
 
-  INF SiliciumPkg/PrePi/PrePi.inf
-
-  FILE FREEFORM = DDE58710-41CD-4306-DBFB-3FA90BB1D2DD {
-    SECTION UI = "uefiplat.cfg"
-    SECTION RAW = Binaries/i005d/RawFiles/uefiplat.cfg
-  }
+  INF SiliciumPkg/Sec/Sec.inf
 
   FILE FV_IMAGE = 9E21FD93-9C72-4c15-8C4B-E77F1DB2D792 {
     SECTION GUIDED EE4E5898-3914-4259-9D6E-DC7BD79403CF PROCESSING_REQUIRED = TRUE {

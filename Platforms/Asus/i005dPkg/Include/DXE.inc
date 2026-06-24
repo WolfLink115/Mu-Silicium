@@ -1,7 +1,7 @@
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
-  #INF Binaries/i005d/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
+  INF Binaries/i005d/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
 
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
@@ -25,7 +25,7 @@
   INF Binaries/i005d/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/i005d/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/i005d/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -48,14 +48,8 @@
   INF Binaries/i005d/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/i005d/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/i005d/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/i005d/QcomPkg/Drivers/ICBDxe/ICBDxe.inf
   INF Binaries/i005d/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
 
   INF Binaries/i005d/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
@@ -67,7 +61,7 @@
   INF Binaries/i005d/QcomPkg/Drivers/FeatureEnablerDxe/FeatureEnablerDxe.inf
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
-  INF Binaries/vili/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
+  INF Binaries/i005d/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
 !else
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
@@ -92,7 +86,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/i005d/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

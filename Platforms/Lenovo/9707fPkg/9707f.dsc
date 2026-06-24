@@ -24,7 +24,6 @@
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = 9707fPkg/9707f.fdf
   USE_CUSTOM_DISPLAY_DRIVER      = 0
-  HAS_BUILD_IN_KEYBOARD          = 0
 
   #
   # 0 = SM8250
@@ -33,60 +32,53 @@
   #
   SOC_TYPE                       = 2
 
-[BuildOptions]
-  *_*_*_CC_FLAGS = -DSOC_TYPE=$(SOC_TYPE) -DHAS_BUILD_IN_KEYBOARD=$(HAS_BUILD_IN_KEYBOARD)
-
-[LibraryClasses]
-  DeviceMemoryMapLib|9707fPkg/Library/DeviceMemoryMapLib/DeviceMemoryMapLib.inf
-  DeviceConfigurationMapLib|9707fPkg/Library/DeviceConfigurationMapLib/DeviceConfigurationMapLib.inf
-  DevicePrePiLib|9707fPkg/Library/DevicePrePiLib/DevicePrePiLib.inf
+!include KonaPkg/KonaPkg.dsc.inc
 
 [PcdsFixedAtBuild]
-  # DDR Start Address
+  #
+  # DDR Memory
+  #
   gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
 
-  # Device Maintainer
-  gSiliciumPkgTokenSpaceGuid.PcdDeviceMaintainer|"No Maintainer"
+  #
+  # UEFI Stack
+  #
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x9FF90000
+  gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
-  # CPU Vector Address
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9FF8C000
-
-  # UEFI Stack Addresses
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9FF90000
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000
-
-  # SmBios
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Lenovo Limited"
+  #
+  # SMBIOS
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Lenovo"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Legion Tab Y700"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"9707f"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Legion_Tab_Y700_9707f"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Legion Tab Y700"
 
-  # Simple FrameBuffer
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1600
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2560
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferColorDepth|32
+  #
+  # Simple Frame Buffer
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth|1600
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight|2560
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
 
-  # Platform Pei
+  #
+  # Platform PEI
+  #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  # Dynamic RAM Start Address
-  gQcomPkgTokenSpaceGuid.PcdRamPartitionBase|0xA0000000
-
-  # SD Card Slot
+  #
+  # Storage
+  #
   gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-  
-  # USB Controller
-  gQcomPkgTokenSpaceGuid.PcdStartUsbController|TRUE
 
-[PcdsDynamicDefault]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1600
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2560
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1600
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2560
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|200
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|134
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|200
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|134
+[LibraryClasses]
+  #
+  # Memory Libraries
+  #
+  MemoryMapLib|9707fPkg/Library/MemoryMapLib/MemoryMapLib.inf
 
-!include SM8250Pkg/SM8250Pkg.dsc.inc
+  #
+  # QCOM Libraries
+  #
+  ConfigurationMapLib|9707fPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf

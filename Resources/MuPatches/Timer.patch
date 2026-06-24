@@ -1,5 +1,5 @@
 diff --git a/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.c b/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.c
-index fbbecdc528..8f9a112394 100644
+index fbbecdc528..9378c27017 100644
 --- a/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.c
 +++ b/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.c
 @@ -59,7 +59,14 @@ ArmGenericTimerGetTimerFreq (
@@ -11,7 +11,7 @@ index fbbecdc528..8f9a112394 100644
 +
 +  Freq = ArmReadCntFrq ();
 +  if (!Freq) {
-+    Freq = PcdGet32 (PcdArmArchTimerFreqInHz);
++    Freq = FixedPcdGet64 (PcdTimerFreqOverwrite);
 +  }
 +
 +  return Freq;
@@ -19,18 +19,24 @@ index fbbecdc528..8f9a112394 100644
  
  UINTN
 diff --git a/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf b/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf
-index c37f2729b1..58c294e5f3 100644
+index c37f2729b1..0462650680 100644
 --- a/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf
 +++ b/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf
-@@ -26,3 +26,6 @@
+@@ -22,7 +22,12 @@
+ [Packages]
+   MdePkg/MdePkg.dec
+   ArmPkg/ArmPkg.dec
++  SiliciumPkg/SiliciumPkg.dec
+ 
  [LibraryClasses]
    ArmLib
    BaseLib
++  PcdLib
 +
-+[Pcd]
-+  gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz
++[FixedPcd]
++  gSiliciumPkgTokenSpaceGuid.PcdTimerFreqOverwrite
 diff --git a/ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.c b/ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.c
-index 893125a111..418ef3ad18 100644
+index 893125a111..4b1018b8dc 100644
 --- a/ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.c
 +++ b/ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.c
 @@ -59,7 +59,14 @@ ArmGenericTimerGetTimerFreq (
@@ -42,7 +48,7 @@ index 893125a111..418ef3ad18 100644
 +
 +  Freq = ArmReadCntFrq ();
 +  if (!Freq) {
-+    Freq = PcdGet32 (PcdArmArchTimerFreqInHz);
++    Freq = FixedPcdGet64 (PcdTimerFreqOverwrite);
 +  }
 +
 +  return Freq;
@@ -50,13 +56,19 @@ index 893125a111..418ef3ad18 100644
  
  UINTN
 diff --git a/ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.inf b/ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.inf
-index 89fcb71c5f..3179d535b3 100644
+index 89fcb71c5f..5c29ece5a6 100644
 --- a/ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.inf
 +++ b/ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.inf
-@@ -26,3 +26,6 @@
+@@ -22,7 +22,12 @@
+ [Packages]
+   MdePkg/MdePkg.dec
+   ArmPkg/ArmPkg.dec
++  SiliciumPkg/SiliciumPkg.dec
+ 
  [LibraryClasses]
    ArmLib
    BaseLib
++  PcdLib
 +
-+[Pcd]
-+  gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz
++[FixedPcd]
++  gSiliciumPkgTokenSpaceGuid.PcdTimerFreqOverwrite

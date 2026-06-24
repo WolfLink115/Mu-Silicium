@@ -16,16 +16,13 @@
 
 [LibraryClasses]
   ArmLib
-  PcdLib
-  IoLib
-  HobLib
-  CompilerIntrinsicsLib
+  BaseMemoryLib
   CacheMaintenanceLib
   MemoryMapHelperLib
   TimerLib
 
-[Pcd]
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferWidth
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferHeight
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferColorDepth
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferDelay
+[FixedPcd]
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferDelay

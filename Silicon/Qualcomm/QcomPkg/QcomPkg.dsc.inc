@@ -7,40 +7,59 @@
 #  SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
 
-[PcdsFixedAtBuild]
-  # RAM Size (512 MB)
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x20000000
+!include SiliciumPkg/SiliciumPkg.dsc.inc
 
-  # SmBios
+[BuildOptions]
+  *_CLANGPDB_AARCH64_CC_FLAGS = -D HAS_ACTLR_EL1_UNIMPLEMENTED_ERRATA=$(HAS_ACTLR_EL1_UNIMPLEMENTED_ERRATA) -D HAS_AMCNTENSET0_EL0_UNIMPLEMENTED_ERRATA=$(HAS_AMCNTENSET0_EL0_UNIMPLEMENTED_ERRATA) -D HAS_GIC_V3_WITHOUT_IRM_FLAG_SUPPORT_ERRATA=$(HAS_GIC_V3_WITHOUT_IRM_FLAG_SUPPORT_ERRATA) -D HAS_PSCI_MEMPROTECT_FAILING_ERRATA=$(HAS_PSCI_MEMPROTECT_FAILING_ERRATA)
+
+[PcdsFixedAtBuild]
+  #
+  # SMBIOS
+  #
   gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorSocket|"Qualcomm"
   gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorManufacturer|"Qualcomm Technologies, Inc."
 
-  # Mass Storage App
-  gSiliciumPkgTokenSpaceGuid.PcdSpecialApp|{ 0xD8, 0xEC, 0x14, 0xFB, 0x32, 0x94, 0xB8, 0x48, 0xA6, 0x92, 0xAE, 0x4B, 0xC1, 0x9D, 0x56, 0x8B }
-  gSiliciumPkgTokenSpaceGuid.PcdSpecialAppName|"Mass Storage"
+  #
+  # Mass Storage
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdAlternativeAppFile|{ 0xD8, 0xEC, 0x14, 0xFB, 0x32, 0x94, 0xB8, 0x48, 0xA6, 0x92, 0xAE, 0x4B, 0xC1, 0x9D, 0x56, 0x8B }
+  gSiliciumPkgTokenSpaceGuid.PcdAlternativeAppFileName|"Mass Storage"
 
 [LibraryClasses]
-  # Custom Libraries
-  RamPartitionTableLib|QcomPkg/Library/RamPartitionTableLib/RamPartitionTableLib.inf
-  ConfigurationMapHelperLib|QcomPkg/Library/ConfigurationMapHelperLib/ConfigurationMapHelperLib.inf
-
-  # Pei Library
+  #
+  # SEC Libraries
+  #
   PlatformPeiLib|QcomPkg/Library/PlatformPeiLib/PlatformPeiLib.inf
 
-  # Memory Protection Library
-  MemoryProtectionLib|QcomPkg/Library/MemoryProtectionLib/MemoryProtectionLib.inf
+  #
+  # Memory Libraries
+  #
+  RamManagerLib|QcomPkg/Library/RamManagerLib/RamManagerLib.inf
+
+  #
+  # BDS Libraries
+  #
+  ErrataPatchesLib|QcomPkg/Library/ErrataPatchesLib/ErrataPatchesLib.inf
+
+  #
+  # Custom Libraries
+  #
+  ConfigurationMapHelperLib|QcomPkg/Library/ConfigurationMapHelperLib/ConfigurationMapHelperLib.inf
+  ArmSmmuDetachLib|QcomPkg/Library/ArmSmmuDetachLib/ArmSmmuDetachLib.inf
 
 [Components]
-  # SmBios
+  #
+  # SMBIOS
+  #
   QcomPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
 
-  # Custom Snapdragon Drivers
-  QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-  QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
+  #
+  # Custom Drivers
+  #
   QcomPkg/Drivers/DisplayReEnablerDxe/DisplayReEnablerDxe.inf
   QcomPkg/Drivers/PeripheralInitDxe/PeripheralInitDxe.inf
 
-  # Custom Snapdragon Apps
+  #
+  # Custom Apps
+  #
   QcomPkg/Applications/MassStorage/MassStorage.inf
-
-!include SiliciumPkg/SiliciumPkg.dsc.inc

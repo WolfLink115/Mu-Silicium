@@ -28,7 +28,7 @@
   INF Binaries/aston/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/aston/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -42,9 +42,11 @@
   INF Binaries/aston/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
 
-  INF Binaries/aston/MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
+  INF MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
+
   INF Binaries/aston/MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
   INF Binaries/aston/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
+
   INF FatPkg/EnhancedFatDxe/Fat.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
@@ -56,14 +58,9 @@
   INF Binaries/aston/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-  
-  #INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-  
   INF Binaries/aston/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/ICBDxe/ICBDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-  
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
 
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
 
@@ -94,7 +91,6 @@
   INF Binaries/aston/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/ChargerExDxe/ChargerExDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/OcdtDxe/OplusProject.inf
-  #INF Binaries/aston/QcomPkg/Drivers/Phoenix2_0Dxe/Phoenix2_0Dxe.inf
   INF Binaries/aston/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
   INF Binaries/aston/QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.inf
   INF Binaries/aston/QcomPkg/Drivers/OplusVibrDxe/OplusVibrDxe.inf
@@ -108,7 +104,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/aston/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

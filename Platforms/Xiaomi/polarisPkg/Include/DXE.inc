@@ -26,14 +26,11 @@
   INF Binaries/polaris/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/polaris/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/polaris/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/polaris/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/polaris/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/polaris/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
   INF Binaries/polaris/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
@@ -50,9 +47,6 @@
 
   INF Binaries/polaris/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/polaris/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/polaris/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/polaris/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/polaris/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
@@ -82,7 +76,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/polaris/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

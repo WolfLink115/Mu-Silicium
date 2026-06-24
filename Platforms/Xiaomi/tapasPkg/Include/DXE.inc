@@ -29,15 +29,12 @@
   INF Binaries/tapas/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
   INF Binaries/tapas/QcomPkg/Drivers/QcomMpmTimerDxe/QcomMpmTimerDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/tapas/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/tapas/QcomPkg/Drivers/GLinkDxe/GLinkDxe.inf
-  INF Binaries/tapas/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-  
+  INF Binaries/tapas/QcomPkg/Drivers/SmemDxe/SmemDxe.inf  
   INF Binaries/tapas/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/tapas/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
 
@@ -51,9 +48,6 @@
   INF Binaries/tapas/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/tapas/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/tapas/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/tapas/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/tapas/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/tapas/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
@@ -86,7 +80,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/tapas/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

@@ -24,7 +24,6 @@
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = vayuPkg/vayu.fdf
   USE_CUSTOM_DISPLAY_DRIVER      = 1
-  HAS_BUILD_IN_KEYBOARD          = 0
 
   #
   # 0 = SM8150
@@ -33,60 +32,53 @@
   #
   SOC_TYPE                       = 2
 
-[BuildOptions]
-  *_*_*_CC_FLAGS = -DSOC_TYPE=$(SOC_TYPE) -DHAS_BUILD_IN_KEYBOARD=$(HAS_BUILD_IN_KEYBOARD)
-
-[LibraryClasses]
-  DeviceMemoryMapLib|vayuPkg/Library/DeviceMemoryMapLib/DeviceMemoryMapLib.inf
-  DeviceConfigurationMapLib|vayuPkg/Library/DeviceConfigurationMapLib/DeviceConfigurationMapLib.inf
-  DevicePrePiLib|vayuPkg/Library/DevicePrePiLib/DevicePrePiLib.inf
+!include HanaPkg/HanaPkg.dsc.inc
 
 [PcdsFixedAtBuild]
-  # DDR Start Address
+  #
+  # DDR Memory
+  #
   gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
 
-  # Device Maintainer
-  gSiliciumPkgTokenSpaceGuid.PcdDeviceMaintainer|"Daniel224455"
+  #
+  # UEFI Stack
+  #
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x9FFB0000
+  gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x20000
 
-  # CPU Vector Address
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9FF8C000
-
-  # UEFI Stack Addresses
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9FFB0000
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00020000
-
-  # SmBios
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi Inc"
+  #
+  # SMBIOS
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco X3 Pro"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"vayu"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"MP"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"J20S"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco_X3_Pro_vayu"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco X3 Pro"
 
-  # Simple FrameBuffer
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2400
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferColorDepth|32
+  #
+  # Simple Frame Buffer
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth|1080
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight|2400
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
 
-  # Platform Pei
+  #
+  # Platform PEI
+  #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  # Dynamic RAM Start Address
-  gQcomPkgTokenSpaceGuid.PcdRamPartitionBase|0xC3500000
-
-  # SD Card Slot
+  #
+  # Storage
+  #
   gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-  
-  # USB Controller
-  gQcomPkgTokenSpaceGuid.PcdStartUsbController|TRUE
 
-[PcdsDynamicDefault]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|126
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|126
-  
-!include SM8150Pkg/SM8150Pkg.dsc.inc
+[LibraryClasses]
+  #
+  # Memory Libraries
+  #
+  MemoryMapLib|vayuPkg/Library/MemoryMapLib/MemoryMapLib.inf
+
+  #
+  # QCOM Libraries
+  #
+  ConfigurationMapLib|vayuPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf

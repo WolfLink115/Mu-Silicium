@@ -1,5 +1,4 @@
 APRIORI DXE {
-  # First, install the PCD driver and call DxeInit
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
@@ -8,19 +7,12 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-
-  # Next, install cpu protocol and enable the interrupt controller
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-
-  # Core Drivers
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/surya/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/surya/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/surya/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -32,9 +24,6 @@ APRIORI DXE {
   INF Binaries/surya/QcomPkg/Drivers/RpmhDxe/RpmhDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/PdcDxe/PdcDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/surya/QcomPkg/Drivers/ShmBridgeDxe/ShmBridgeDxeLA.inf
   INF Binaries/surya/QcomPkg/Drivers/TzDxe/ScmDxeLA.inf
 
@@ -75,26 +64,25 @@ APRIORI DXE {
   INF Binaries/surya/QcomPkg/Drivers/VibratorDxe/VibratorDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/I2CDxe/I2CDxe.inf
-#  INF Binaries/surya/QcomPkg/Drivers/ASN1X509Dxe/ASN1X509Dxe.inf
   INF Binaries/surya/QcomPkg/Drivers/AdcDxe/AdcDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/UsbPwrCtrlDxe/UsbPwrCtrlDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.inf
   INF Binaries/surya/QcomPkg/Drivers/ChargerExDxe/ChargerExDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/UsbfnDwc3Dxe/UsbfnDwc3Dxe.inf
 
-  INF Binaries/generic/QcomPkg/Drivers/XhciPciEmulationDxe/XhciPciEmulationDxe.inf
-  INF Binaries/generic/QcomPkg/Drivers/XhciDxe/XhciDxe.inf
-
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
+  INF Binaries/surya/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf
+  INF Binaries/surya/QcomPkg/Drivers/UsbDeviceDxe/UsbDeviceDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/UsbConfigDxe/UsbConfigDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/TsensDxe/TsensDxe.inf
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/surya/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
+  INF QcomPkg/Drivers/DisplayReEnablerDxe/DisplayReEnablerDxe.inf
 !else
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif

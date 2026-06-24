@@ -23,8 +23,7 @@
   BUILD_TARGETS                  = RELEASE|DEBUG
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = viliPkg/vili.fdf
-  USE_CUSTOM_DISPLAY_DRIVER      = 0
-  HAS_BUILD_IN_KEYBOARD          = 0
+  USE_CUSTOM_DISPLAY_DRIVER      = 1
 
   #
   # 0 = SM8350
@@ -33,61 +32,54 @@
   #
   SOC_TYPE                       = 0
 
-[BuildOptions]
-  *_*_*_CC_FLAGS = -DSOC_TYPE=$(SOC_TYPE) -DHAS_BUILD_IN_KEYBOARD=$(HAS_BUILD_IN_KEYBOARD)
-
-[LibraryClasses]
-  DeviceMemoryMapLib|viliPkg/Library/DeviceMemoryMapLib/DeviceMemoryMapLib.inf
-  DeviceConfigurationMapLib|viliPkg/Library/DeviceConfigurationMapLib/DeviceConfigurationMapLib.inf
-  DevicePrePiLib|viliPkg/Library/DevicePrePiLib/DevicePrePiLib.inf
+!include LahainaPkg/LahainaPkg.dsc.inc
 
 [PcdsFixedAtBuild]
-  # DDR Start Address
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000 
+  #
+  # DDR Memory
+  #
+  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
 
-  # Device Maintainer
-  gSiliciumPkgTokenSpaceGuid.PcdDeviceMaintainer|"Robotix"
+  #
+  # UEFI Stack
+  #
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x9FF90000
+  gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
-  # CPU Vector Address
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9FF8C000
-
-  # UEFI Stack Addresses
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9FF90000
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000 
-
-  # SmBios
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi Inc"
+  #
+  # SMBIOS
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"11T Pro"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"vili"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"11T_Pro_vili"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"11T Pro"
 
-  # Simple FrameBuffer
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2400
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferColorDepth|32
+  #
+  # Simple Frame Buffer
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth|1080
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight|2400
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
 
-  # Platform Pei
+  #
+  # Platform PEI
+  #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdScheduleInterfaceAddr|0x9FC37980
+  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37980
 
-  # Dynamic RAM Start Address
-  gQcomPkgTokenSpaceGuid.PcdRamPartitionBase|0xECA00000
-
-  # SD Card Slot
+  #
+  # Storage
+  #
   gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
-  # USB Controller
-  gQcomPkgTokenSpaceGuid.PcdStartUsbController|TRUE
+[LibraryClasses]
+  #
+  # Memory Libraries
+  #
+  MemoryMapLib|viliPkg/Library/MemoryMapLib/MemoryMapLib.inf
 
-[PcdsDynamicDefault]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|126
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|126
-
-!include SM8350Pkg/SM8350Pkg.dsc.inc
+  #
+  # QCOM Libraries
+  #
+  ConfigurationMapLib|viliPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf

@@ -1,5 +1,4 @@
 APRIORI DXE {
-  # First, install the PCD driver and call DxeInit
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
@@ -8,20 +7,13 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-
-  # Next, install cpu protocol and enable the interrupt controller
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-
-  # Core Drivers
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
   INF MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf
 
   INF Binaries/lavender/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/lavender/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -67,30 +59,27 @@ APRIORI DXE {
   INF Binaries/lavender/QcomPkg/Drivers/AdcDxe/AdcDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.inf
   INF Binaries/lavender/QcomPkg/Drivers/UsbfnDwc3Dxe/UsbfnDwc3Dxe.inf
-
-  INF Binaries/generic/QcomPkg/Drivers/XhciPciEmulationDxe/XhciPciEmulationDxe.inf
-  INF Binaries/generic/QcomPkg/Drivers/XhciDxe/XhciDxe.inf
   
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
+  INF Binaries/lavender/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf
+  INF Binaries/lavender/QcomPkg/Drivers/UsbDeviceDxe/UsbDeviceDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/UsbConfigDxe/UsbConfigDxe.inf
-  
   INF Binaries/lavender/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/TsensDxe/TsensDxe.inf
   
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/lavender/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
+  INF QcomPkg/Drivers/DisplayReEnablerDxe/DisplayReEnablerDxe.inf
 !else
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
 
-  #INF Binaries/lavender/QcomPkg/Drivers/TzDxe/TzDxeLA.inf
+  INF Binaries/lavender/QcomPkg/Drivers/TzDxe/TzDxeLA.inf
   INF Binaries/lavender/QcomPkg/Drivers/LimitsDxe/LimitsDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/MdtpDxe/MdtpDxe.inf
-  
- 
   INF Binaries/lavender/QcomPkg/Drivers/HashDxe/HashDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/RNGDxe/RngDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/MpPowerDxe/MpPowerDxe.inf
@@ -99,5 +88,4 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf
   INF MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitterDxe.inf
   INF MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
- 
 }

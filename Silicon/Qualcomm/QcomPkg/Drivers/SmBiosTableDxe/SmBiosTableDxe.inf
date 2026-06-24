@@ -7,15 +7,15 @@
   ENTRY_POINT                    = RegisterSmBiosTables
 
 [Sources]
-  SmBiosTableDxe.c
+  SmBiosTable.c
 
 [Packages]
   ArmPkg/ArmPkg.dec
-  ArmPlatformPkg/ArmPlatformPkg.dec
-  MdeModulePkg/MdeModulePkg.dec
   MdePkg/MdePkg.dec
-  QcomPkg/QcomPkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ArmPlatformPkg/ArmPlatformPkg.dec
   SiliciumPkg/SiliciumPkg.dec
+  QcomPkg/QcomPkg.dec
 
 [LibraryClasses]
   UefiBootServicesTableLib
@@ -25,7 +25,6 @@
   DebugLib
   UefiLib
   PrintLib
-  RamPartitionTableLib
 
 [FixedPcd]
   gArmTokenSpaceGuid.PcdSystemMemoryBase
@@ -34,15 +33,7 @@
   gArmPlatformTokenSpaceGuid.PcdClusterCount
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor
-  gQcomPkgTokenSpaceGuid.PcdMaxCpuFreq
-  gQcomPkgTokenSpaceGuid.PcdMemorySpeed
-  gQcomPkgTokenSpaceGuid.PcdHasLevel2Cache
-  gQcomPkgTokenSpaceGuid.PcdHasLevel3Cache
-  gQcomPkgTokenSpaceGuid.PcdLevel1InstCacheSize
-  gQcomPkgTokenSpaceGuid.PcdLevel1DataCacheSize
-  gQcomPkgTokenSpaceGuid.PcdLevel2CacheSize
-  gQcomPkgTokenSpaceGuid.PcdLevel3CacheSize
-  gSiliciumPkgTokenSpaceGuid.PcdDeviceMaintainer
+  gQcomPkgTokenSpaceGuid.PcdForceMemorySpeed
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel
@@ -51,13 +42,20 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorSocket
   gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorManufacturer
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorCodename
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize
 
 [Protocols]
   gEfiSmbiosProtocolGuid
   gEfiChipInfoProtocolGuid
-  gEfiClockProtocolGuid
   gEfiDDRGetInfoProtocolGuid
+  gEfiClockProtocolGuid
   
 [Depex]
   gEfiSmbiosProtocolGuid

@@ -24,7 +24,6 @@
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = aliothPkg/alioth.fdf
   USE_CUSTOM_DISPLAY_DRIVER      = 0
-  HAS_BUILD_IN_KEYBOARD          = 0
 
   #
   # 0 = SM8250
@@ -33,63 +32,65 @@
   #
   SOC_TYPE                       = 2
 
-[BuildOptions]
-  *_*_*_CC_FLAGS = -DSOC_TYPE=$(SOC_TYPE) -DHAS_BUILD_IN_KEYBOARD=$(HAS_BUILD_IN_KEYBOARD)
-
-[LibraryClasses]
-  DeviceMemoryMapLib|aliothPkg/Library/DeviceMemoryMapLib/DeviceMemoryMapLib.inf
-  DeviceConfigurationMapLib|aliothPkg/Library/DeviceConfigurationMapLib/DeviceConfigurationMapLib.inf
-  DevicePrePiLib|aliothPkg/Library/DevicePrePiLib/DevicePrePiLib.inf
+!include KonaPkg/KonaPkg.dsc.inc
 
 [PcdsFixedAtBuild]
-  # DDR Start Address
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000        
+  #
+  # DDR Memory
+  #
+  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
 
-  # Device Maintainer
-  gSiliciumPkgTokenSpaceGuid.PcdDeviceMaintainer|"AdrianoA3 & N1kroks"
+  #
+  # UEFI Stack
+  #
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x9FF90000
+  gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
-  # CPU Vector Address
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9FF8C000
-
-  # UEFI Stack Addresses
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9FF90000
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00040000        
-
-  # SmBios
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi Inc"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco F3"
+  #
+  # SMBIOS
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"alioth"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco F3"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco F3"
+!if $(DEVICE_MODEL) == 0
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"POCO F3"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"M2012K11AG"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"K11AG"
+!elseif $(DEVICE_MODEL) == 1
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Redmi K40"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"M2012K11AC"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"K11AC"
+!elseif $(DEVICE_MODEL) == 2
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Mi 11X"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"M2012K11AI"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"K11AI"
+!else
+!error "Invalid Model Type! 0, 1 or 2 are Valid Model Types."
+!endif
 
-  # Simple FrameBuffer
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2400
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferColorDepth|32
+  #
+  # Simple Frame Buffer
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth|1080
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight|2400
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
 
-  # Platform Pei
+  #
+  # Platform PEI
+  #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  # Dynamic RAM Start Address
-  gQcomPkgTokenSpaceGuid.PcdRamPartitionBase|0xA0000000
-
-  # SD Card Slot
+  #
+  # Storage
+  #
   gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-  
-  # USB Controller
-  gQcomPkgTokenSpaceGuid.PcdStartUsbController|FALSE
-
-[PcdsDynamicDefault]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|126
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|126
-
-!include SM8250Pkg/SM8250Pkg.dsc.inc
 
 [LibraryClasses]
-  AcpiPlatformUpdateLib|aliothPkg/Library/AcpiPlatformUpdateLib/AcpiPlatformUpdateLib.inf
+  #
+  # Memory Libraries
+  #
+  MemoryMapLib|aliothPkg/Library/MemoryMapLib/MemoryMapLib.inf
+
+  #
+  # QCOM Libraries
+  #
+  ConfigurationMapLib|aliothPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf

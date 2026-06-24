@@ -12,26 +12,30 @@
   LIBRARY_CLASS                  = MemoryInitPeiLib|SEC PEIM
 
 [Sources]
-  MemoryInitPeiLib.c
+  MemoryInitPei.c
 
 [Packages]
-  MdePkg/MdePkg.dec
-  EmbeddedPkg/EmbeddedPkg.dec
   ArmPkg/ArmPkg.dec
-  ArmPlatformPkg/ArmPlatformPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
   SiliciumPkg/SiliciumPkg.dec
 
 [LibraryClasses]
+  PcdLib
+  SortLib
+  ArmMmuLib
+  MemoryAllocationLib
+  MemoryMapLib
   DebugLib
   HobLib
-  ArmMmuLib
-  DeviceMemoryMapLib
-  PcdLib
 
 [FeaturePcd]
   gEmbeddedTokenSpaceGuid.PcdPrePiProduceMemoryTypeInformationHob
 
 [Pcd]
+  gArmTokenSpaceGuid.PcdSystemMemoryBase
   gArmTokenSpaceGuid.PcdSystemMemorySize
 
 [Depex]

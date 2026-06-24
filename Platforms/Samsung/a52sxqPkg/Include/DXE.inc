@@ -1,6 +1,8 @@
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
+
   INF Binaries/a52sxq/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
+
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
@@ -23,7 +25,7 @@
   INF Binaries/a52sxq/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/a52sxq/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -39,14 +41,10 @@
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
   INF Binaries/a52sxq/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/a52sxq/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/I2CDxe/I2CDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
-  INF Binaries/a52sxq/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/UFSDxe/UFSDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/PwrUtilsDxe/PwrUtilsDxe.inf
@@ -56,9 +54,6 @@
   INF Binaries/a52sxq/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/ICBDxe/ICBDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
   INF EmbeddedPkg/SimpleTextInOutSerial/SimpleTextInOutSerial.inf
   INF MdeModulePkg/Universal/PrintDxe/PrintDxe.inf
@@ -71,12 +66,12 @@
 !endif
   INF Binaries/a52sxq/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/SPIDxe/SPIDxe.inf
+  INF Binaries/a52sxq/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/SamsungDxe/BoardInfoDxe/BoardInfoDxe.inf
   INF Binaries/a52sxq/QcomPkg/Drivers/FeatureEnablerDxe/FeatureEnablerDxe.inf
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/a52sxq/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
-  INF QcomPkg/Drivers/DisplayReEnablerDxe/DisplayReEnablerDxe.inf
 !else
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
@@ -95,7 +90,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/a52sxq/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

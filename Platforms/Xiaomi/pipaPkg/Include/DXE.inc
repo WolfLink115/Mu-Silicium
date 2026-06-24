@@ -28,24 +28,19 @@
   INF Binaries/pipa/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/pipa/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/pipa/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/PwrUtilsDxe/PwrUtilsDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/RpmhDxe/RpmhDxe.inf
-
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
 	INF Binaries/pipa/QcomPkg/Drivers/CPRDxe/CPRDxe.inf
 !endif
-
   INF Binaries/pipa/QcomPkg/Drivers/PdcDxe/PdcDxe.inf
 
   INF MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
@@ -55,9 +50,6 @@
 
   INF Binaries/pipa/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/pipa/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
@@ -68,9 +60,7 @@
   INF Binaries/pipa/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/UFSDxe/UFSDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
-
-  # Only used for DisplayDxe for Qualcomm Demura
-  #INF Binaries/pipa/QcomPkg/Drivers/FeatureEnablerDxe/FeatureEnablerDxe.inf
+  INF Binaries/pipa/QcomPkg/Drivers/FeatureEnablerDxe/FeatureEnablerDxe.inf
   INF Binaries/pipa/QcomPkg/Drivers/VibratorDxe/VibratorDxe.inf
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
@@ -95,7 +85,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/pipa/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

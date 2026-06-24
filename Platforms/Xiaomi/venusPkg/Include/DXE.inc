@@ -25,7 +25,7 @@
   INF Binaries/venus/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/venus/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/venus/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -49,14 +49,8 @@
   INF Binaries/venus/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/venus/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/venus/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/venus/QcomPkg/Drivers/ICBDxe/ICBDxe.inf
   INF Binaries/venus/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
   INF EmbeddedPkg/SimpleTextInOutSerial/SimpleTextInOutSerial.inf
   INF MdeModulePkg/Universal/PrintDxe/PrintDxe.inf
@@ -98,7 +92,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/venus/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

@@ -28,14 +28,11 @@
   INF Binaries/surya/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/surya/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/surya/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
@@ -52,9 +49,6 @@
 
   INF Binaries/surya/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/surya/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/surya/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
@@ -63,11 +57,11 @@
   INF Binaries/surya/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/UFSDxe/UFSDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
-#  INF Binaries/surya/QcomPkg/Drivers/ASN1X509Dxe/ASN1X509Dxe.inf
   INF Binaries/surya/QcomPkg/Drivers/VibratorDxe/VibratorDxe.inf
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/surya/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
+  INF QcomPkg/Drivers/DisplayReEnablerDxe/DisplayReEnablerDxe.inf
 !else
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
@@ -84,12 +78,8 @@
   INF Binaries/surya/QcomPkg/Drivers/DDRInfoDxe/DDRInfoDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/UsbfnDwc3Dxe/UsbfnDwc3Dxe.inf
 
-  INF Binaries/generic/QcomPkg/Drivers/XhciPciEmulationDxe/XhciPciEmulationDxe.inf
-  INF Binaries/generic/QcomPkg/Drivers/XhciDxe/XhciDxe.inf
-
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/surya/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

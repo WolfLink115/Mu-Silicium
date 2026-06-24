@@ -29,15 +29,12 @@
   INF Binaries/fog/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
   INF Binaries/fog/QcomPkg/Drivers/QcomMpmTimerDxe/QcomMpmTimerDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/fog/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/fog/QcomPkg/Drivers/GLinkDxe/GLinkDxe.inf
-  INF Binaries/fog/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-  
+  INF Binaries/fog/QcomPkg/Drivers/SmemDxe/SmemDxe.inf  
   INF Binaries/fog/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/fog/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
 
@@ -51,9 +48,6 @@
   INF Binaries/fog/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/fog/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/fog/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/fog/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/fog/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/fog/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
@@ -80,13 +74,11 @@
   INF Binaries/fog/QcomPkg/Drivers/TsensDxe/TsensDxe.inf
   INF Binaries/fog/QcomPkg/Drivers/DDRInfoDxe/DDRInfoDxe.inf
   INF Binaries/fog/QcomPkg/Drivers/UsbfnDwc3Dxe/UsbfnDwc3Dxe.inf
-
   INF Binaries/generic/QcomPkg/Drivers/XhciPciEmulationDxe/XhciPciEmulationDxe.inf
   INF Binaries/generic/QcomPkg/Drivers/XhciDxe/XhciDxe.inf
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/fog/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

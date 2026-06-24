@@ -27,15 +27,12 @@
   INF Binaries/nitrogen/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/nitrogen/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/nitrogen/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/nitrogen/QcomPkg/Drivers/GLinkDxe/GLinkDxe.inf
   INF Binaries/nitrogen/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/nitrogen/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/nitrogen/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
 
@@ -46,9 +43,6 @@
 
   INF Binaries/nitrogen/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/nitrogen/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/nitrogen/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/nitrogen/QcomPkg/Drivers/I2CDxe/I2CDxe.inf
   INF Binaries/nitrogen/QcomPkg/Drivers/SPIDxe/SPIDxe.inf
@@ -75,12 +69,8 @@
   INF Binaries/nitrogen/QcomPkg/Drivers/MpPowerDxe/MpPowerDxe.inf
   INF Binaries/nitrogen/QcomPkg/Drivers/UsbfnDwc3Dxe/UsbfnDwc3Dxe.inf
 
-  INF Binaries/generic/QcomPkg/Drivers/XhciPciEmulationDxe/XhciPciEmulationDxe.inf
-  INF Binaries/generic/QcomPkg/Drivers/XhciDxe/XhciDxe.inf
-  
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/nitrogen/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf
@@ -90,5 +80,7 @@
   INF Binaries/nitrogen/QcomPkg/Drivers/RNGDxe/RngDxe.inf
 
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
-  
+
   INF Binaries/nitrogen/QcomPkg/Drivers/QdssDxe/QdssDxe.inf
+
+  INF nitrogenPkg/Drivers/TscResConfigDxe/TscResConfigDxe.inf

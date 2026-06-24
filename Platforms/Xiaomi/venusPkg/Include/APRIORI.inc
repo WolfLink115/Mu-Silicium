@@ -1,5 +1,4 @@
 APRIORI DXE {
-  # First, install the PCD driver and call DxeInit
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
@@ -8,19 +7,12 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-
-  # Next, install cpu protocol and enable the interrupt controller
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-
-  # Core Drivers
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/venus/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/venus/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/venus/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/venus/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -34,9 +26,6 @@ APRIORI DXE {
   INF Binaries/venus/QcomPkg/Drivers/RpmhDxe/RpmhDxe.inf
   INF Binaries/venus/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/venus/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/venus/QcomPkg/Drivers/ICBDxe/ICBDxe.inf
   INF Binaries/venus/QcomPkg/Drivers/ShmBridgeDxe/ShmBridgeDxeLA.inf
   INF Binaries/venus/QcomPkg/Drivers/TzDxe/ScmDxeLA.inf

@@ -7,15 +7,15 @@
 #include <Library/DebugLib.h>
 #include <Library/IoLib.h>
 
-#include <Protocol/EfiExynosGpio.h>
+#include <Protocol/EfiGpio.h>
 
 EFI_EXYNOS_GPIO_PROTOCOL *mGpioProtocol;
 
 typedef struct {
   KEY_CONTEXT EfiKeyContext;
-  UINT64      PinctrlBase;
-  UINT32      BankOffset;
-  INT32       Pin;
+  UINT8       BankNumber;
+  UINT8       BankId;
+  UINT8       Pin;
 } KEY_CONTEXT_PRIVATE;
 
 UINTN gBitmapScanCodes[BITMAP_NUM_WORDS(0x18)]    = {0};
@@ -183,9 +183,9 @@ STATIC
 VOID
 KeypadInitializeKeyContextPrivate (KEY_CONTEXT_PRIVATE *Context)
 {
-  Context->PinctrlBase = 0;
-  Context->BankOffset  = 0;
-  Context->Pin         = 0;
+  Context->BankNumber = 0;
+  Context->BankId     = 0;
+  Context->Pin        = 0;
 }
 
 STATIC
@@ -221,22 +221,22 @@ KeypadDeviceConstructor ()
   if (!EFI_ERROR (Status)) {
     // Configure keys
     /// Volume Up Button
-    StaticContext              = KeypadKeyCodeToKeyContext (115);
-    StaticContext->PinctrlBase = 0x15850000;
-    StaticContext->BankOffset  = 0x0;
-    StaticContext->Pin         = 0x3;
+    StaticContext             = KeypadKeyCodeToKeyContext (115);
+    StaticContext->BankNumber = 0;
+    StaticContext->BankId     = GPIO_BANK_ID_A;
+    StaticContext->Pin        = 0x3;
 
     /// Volume Down Button
-    StaticContext              = KeypadKeyCodeToKeyContext (116);
-    StaticContext->PinctrlBase = 0x15850000;
-    StaticContext->BankOffset  = 0x0;
-    StaticContext->Pin         = 0x4;
+    StaticContext             = KeypadKeyCodeToKeyContext (116);
+    StaticContext->BankNumber = 0;
+    StaticContext->BankId     = GPIO_BANK_ID_A;
+    StaticContext->Pin        = 0x4;
 
     /// Power Button
-    StaticContext              = KeypadKeyCodeToKeyContext (117);
-    StaticContext->PinctrlBase = 0x15850000;
-    StaticContext->BankOffset  = 0x40;
-    StaticContext->Pin         = 0x4;
+    StaticContext             = KeypadKeyCodeToKeyContext (117);
+    StaticContext->BankNumber = 2;
+    StaticContext->BankId     = GPIO_BANK_ID_A;
+    StaticContext->Pin        = 0x4;
   } else {
     DEBUG ((EFI_D_ERROR, "%a: Failed to Locate Exynos GPIO Protocol! Status = %r\n", __FUNCTION__, Status));
   }
@@ -266,7 +266,8 @@ KeypadDeviceGetKeys (
   KEYPAD_RETURN_API      *KeypadReturnApi,
   UINT64                  Delta)
 {
-  BOOLEAN IsPressed = FALSE;
+  EFI_STATUS Status    = EFI_SUCCESS;
+  UINT8      IsPressed = FALSE;
 
   if (mGpioProtocol == NULL) {
     return EFI_SUCCESS;
@@ -275,9 +276,12 @@ KeypadDeviceGetKeys (
   for (UINTN Index = 0; Index < (sizeof(KeyList) / sizeof(KeyList[0])); Index++) {
     KEY_CONTEXT_PRIVATE *Context = KeyList[Index];
 
-    IsPressed = !mGpioProtocol->GetPin ((ExynosGpioBank *)Context->PinctrlBase, Context->BankOffset, Context->Pin);
+    Status = mGpioProtocol->GetPin (Context->BankNumber, Context->BankId, Context->Pin, &IsPressed);
+    if (EFI_ERROR (Status)) {
+      return Status;
+    }
 
-    LibKeyUpdateKeyStatus (&Context->EfiKeyContext, KeypadReturnApi, IsPressed, Delta);
+    LibKeyUpdateKeyStatus (&Context->EfiKeyContext, KeypadReturnApi, !IsPressed, Delta);
   }
 
   return EFI_SUCCESS;

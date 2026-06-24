@@ -1,6 +1,4 @@
 ##
-#  PlatformBootManager - Ms Extensions to BdsDxe.
-#
 #  Copyright (C) Microsoft Corporation. All rights reserved.
 #  SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
@@ -13,51 +11,43 @@
   MODULE_TYPE                    = DXE_DRIVER
   UEFI_SPECIFICATION_VERSION     = 2.7
   LIBRARY_CLASS                  = PlatformBootManagerLib|DXE_DRIVER
-  CONSTRUCTOR                    = PlatformBootManagerEntry
 
 [Sources]
-  BdsPlatform.c
-  MsPlatform.c
+  PlatformBootManager.c
+  KeyCallback.c
 
 [Packages]
   MdePkg/MdePkg.dec
-  MdeModulePkg/MdeModulePkg.dec
+  PcBdsPkg/PcBdsPkg.dec
   MsCorePkg/MsCorePkg.dec
+  MsGraphicsPkg/MsGraphicsPkg.dec
+  MdeModulePkg/MdeModulePkg.dec
   SiliciumPkg/SiliciumPkg.dec
 
 [LibraryClasses]
-  DebugLib
-  BaseMemoryLib
-  UefiBootServicesTableLib
-  UefiRuntimeServicesTableLib
-  MemoryAllocationLib
-  DevicePathLib
-  UefiLib
-  DxeServicesTableLib
-  CapsuleLib
-  DeviceBootManagerLib
-  HobLib
-  PerformanceLib
   PcdLib
+  DebugLib
+  AcpiTableUpdateLib
+  PlatformBootManagerLib
+  UefiRuntimeServicesTableLib
+  UefiBootServicesTableLib
+  SecureBootHandlerLib
+  MemoryAllocationLib
+  MsBootOptionsLib
+  BootGraphicsLib
+  DevicePathLib
   PrintLib
 
 [Pcd]
   gEfiMdePkgTokenSpaceGuid.PcdPlatformBootTimeOut
 
 [FixedPcd]
-  gSiliciumPkgTokenSpaceGuid.PcdSpecialApp
-  gSiliciumPkgTokenSpaceGuid.PcdSpecialAppName
-
-[Protocols]
-  gEfiPciRootBridgeIoProtocolGuid
-  gEfiDxeSmmReadyToLockProtocolGuid
-  gEfiAbsolutePointerProtocolGuid
+  gSiliciumPkgTokenSpaceGuid.PcdAlternativeAppFile
+  gSiliciumPkgTokenSpaceGuid.PcdAlternativeAppFileName
 
 [Guids]
   gEfiEndOfDxeEventGroupGuid
-  gEfiGlobalVariableGuid
-  gEfiMemoryOverwriteControlDataGuid
-  gMuReadyToProcessCapsulesNotifyGuid
 
-[Depex]
-  gEfiVariableArchProtocolGuid
+[Protocols]
+  gKeypadDeviceProtocolGuid
+  gEfiSimpleTextInputExProtocolGuid

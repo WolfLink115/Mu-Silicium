@@ -7,21 +7,38 @@
 #  SPDX-License-Identifier: BSD-2-Clause-Patent
 ##
 
+!include SiliciumPkg/SiliciumPkg.dsc.inc
+
 [PcdsFixedAtBuild]
-  # RAM Size (512 MB)
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x20000000
+  #
+  # SMBIOS
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorSocket|"Samsung"
+  gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorManufacturer|"Samsung Electronics Co., Ltd."
 
 [LibraryClasses]
-  # Pei Library
-  PlatformPeiLib|SamsungPkg/Library/PlatformPeiLib/PlatformPeiLib.inf
+  #
+  # ARM Libraries
+  #
+  ArmSmcLib|SamsungPkg/Library/ArmSmcLib/ArmSmcLib.inf
 
-  # Memory Pritection Library
-  MemoryProtectionLib|SamsungPkg/Library/MemoryProtectionLib/MemoryProtectionLib.inf
+  #
+  # Custom Libraries
+  #
+  PlatformUfsLib|SamsungPkg/Library/PlatformUfsLibNull/PlatformUfsLibNull.inf
+  UfsCalAdapterLib|SamsungPkg/Library/UfsCalAdapterLib/UfsCalAdapterLib.inf
 
 [Components]
-  # Custom Exynos Drivers
-  SamsungPkg/Drivers/ExynosGpioDxe/ExynosGpioDxe.inf
-  SamsungPkg/Drivers/ExynosSpeedyDxe/ExynosSpeedyDxe.inf
-  SamsungPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
+  #
+  # SMBIOS
+  #
+  SamsungPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
 
-!include SiliciumPkg/SiliciumPkg.dsc.inc
+  #
+  # Custom Drivers
+  #
+  SamsungPkg/Drivers/ChipDataDxe/ChipDataDxe.inf
+  SamsungPkg/Drivers/DdrInfoDxe/DdrInfoDxe.inf
+  SamsungPkg/Drivers/GpioDxe/GpioDxe.inf
+  SamsungPkg/Drivers/SpeedyDxe/SpeedyDxe.inf
+  SamsungPkg/Drivers/UfsDxe/UfsDxe.inf

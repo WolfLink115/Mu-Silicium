@@ -4,7 +4,7 @@
   FILE_GUID                      = FB14ECD8-9432-48B8-A692-AE4BC19D568B
   MODULE_TYPE                    = UEFI_APPLICATION
   VERSION_STRING                 = 1.0
-  ENTRY_POINT                    = InitMassStorage
+  ENTRY_POINT                    = MassStorageEntry
 
 [Sources]
   MassStorage.c
@@ -12,21 +12,31 @@
 [Packages]
   MdePkg/MdePkg.dec
   MsGraphicsPkg/MsGraphicsPkg.dec
-  QcomPkg/QcomPkg.dec
   SiliciumPkg/SiliciumPkg.dec
+  QcomPkg/QcomPkg.dec
 
 [LibraryClasses]
-  UefiApplicationEntryPoint
   DebugLib
   UefiBootServicesTableLib
-  BootGraphicsLib
   UefiRuntimeServicesTableLib
+  UefiApplicationEntryPoint
+  BootGraphicsLib
+  DevicePathLib
   UefiLib
 
-[FixedPcd]
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer
+[Guids]
+  gEfiUfsLU0Guid
+  gEfiUfsLU1Guid
+  gEfiUfsLU2Guid
+  gEfiUfsLU3Guid
+  gEfiUfsLU4Guid
+  gEfiUfsLU5Guid
+  gEfiUfsLU6Guid
+  gEfiUfsLU7Guid
+  gEfiEmmcUserPartitionGuid
+  gEfiSdRemovableGuid
 
 [Protocols]
-  gEfiBlockIoProtocolGuid
-  gChargerExProtocolGuid
+  gEfiGraphicsOutputProtocolGuid
   gEfiUsbMsdProtocolGuid
+  gEfiBlockIoProtocolGuid

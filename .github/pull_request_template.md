@@ -1,14 +1,4 @@
-### What Changed
+Please switch to `Preview` tab and open the right pull request template:
 
-<!-- Describe what you changed. (Write below this Commend) -->
-
-### Reason
-
-<!-- The Reason why you did these Changes. (Write below this Commend) -->
-
-### Checklist
-
-<!-- Place a 'x' inside the '[}' to Check the Box. -->
-
-* [ ] Is what you changed Tested?
-* [ ] Is the Source Code Cleaned?
+* [Generic Changes](?expand=1&template=generic-changes.md)
+* [Device support](?expand=1&template=device-support.md)

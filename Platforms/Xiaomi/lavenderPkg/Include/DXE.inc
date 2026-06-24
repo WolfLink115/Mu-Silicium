@@ -27,15 +27,12 @@
   INF Binaries/lavender/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/lavender/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/GLinkDxe/GLinkDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/lavender/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
 
@@ -46,7 +43,6 @@
 
   INF Binaries/lavender/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
   INF Binaries/lavender/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/I2CDxe/I2CDxe.inf
   INF Binaries/lavender/QcomPkg/Drivers/SPIDxe/SPIDxe.inf
@@ -78,7 +74,6 @@
   
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/lavender/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

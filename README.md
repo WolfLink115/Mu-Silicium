@@ -1,4 +1,4 @@
-# Project Silicium UEFI for ARM-Based Devices
+# Project Silicium UEFI for ARM64-Based Devices
 
 <!-- ![Banner](https://github.com/Project-Silicium/Mu-Silicium/blob/main/Resources/Pictures/Banner.png) -->
 
@@ -15,17 +15,11 @@ This Project focuses on Making ARM-Based Devices Boot Operating Systems like Win
 
 ## Frequently asked Questions
 
-> **Is my Device Supported in this Project?**
-```
-To Check if your Device is Supported, Take a Look at the Status Page Referenced in the Section Above.
-```
+### **Is my Device Supported in this Project?**
+- To Check if your Device is Supported, Take a Look at the Status Page Referenced in the Section Above.
 
-<br>
-
-> **What do I do if my Device isn't Supported in this Project?**
-```
-We made some Guides that Explain How to Port your Device that are Referenced in the Section Above.
-```
+### **What do I do if my Device isn't Supported in this Project?**
+- We made some Guides that Explain How to Port your Device that are Referenced in the Section Above.
 
 ## Credits
 
@@ -38,5 +32,5 @@ We made some Guides that Explain How to Port your Device that are Referenced in 
 
 ## License
 
-All code except drivers in `GPLDrivers` & `GPLApplications` & `GPLLibrary` directorys are licensed under BSD-2-Clause. <br />
+All code except drivers in `GPLDrivers` & `GPLApplications` & `GPLLibrary` directories are licensed under BSD-2-Clause. <br />
 GPL Drivers are licensed under `GPLv2` or later license.

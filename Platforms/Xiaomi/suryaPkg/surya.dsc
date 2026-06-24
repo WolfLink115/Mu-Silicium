@@ -24,7 +24,6 @@
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = suryaPkg/surya.fdf
   USE_CUSTOM_DISPLAY_DRIVER      = 1
-  HAS_BUILD_IN_KEYBOARD          = 0
 
   #
   # 0 = SM7150
@@ -33,60 +32,53 @@
   #
   SOC_TYPE                       = 2
 
-[BuildOptions]
-  *_*_*_CC_FLAGS = -DSOC_TYPE=$(SOC_TYPE) -DHAS_BUILD_IN_KEYBOARD=$(HAS_BUILD_IN_KEYBOARD)
-
-[LibraryClasses]
-  DeviceMemoryMapLib|suryaPkg/Library/DeviceMemoryMapLib/DeviceMemoryMapLib.inf
-  DeviceConfigurationMapLib|suryaPkg/Library/DeviceConfigurationMapLib/DeviceConfigurationMapLib.inf
-  DevicePrePiLib|suryaPkg/Library/DevicePrePiLib/DevicePrePiLib.inf
+!include MooreaPkg/MooreaPkg.dsc.inc
 
 [PcdsFixedAtBuild]
-  # DDR Start Address
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000 
+  #
+  # DDR Memory
+  #
+  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
 
-  # Device Maintainer
-  gSiliciumPkgTokenSpaceGuid.PcdDeviceMaintainer|"remtrik"
+  #
+  # UEFI Stack
+  #
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x9FF90000
+  gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
-  # CPU Vector Address
-  gArmTokenSpaceGuid.PcdCpuVectorBaseAddress|0x9FF8C000
+  #
+  # SMBIOS
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"POCO X3 NFC"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"surya"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"M2007J20CG"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"J20CG"
 
-  # UEFI Stack Addresses
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackBase|0x9FFB0000
-  gEmbeddedTokenSpaceGuid.PcdPrePiStackSize|0x00020000 
+  #
+  # Simple Frame Buffer
+  #
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth|1080
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight|2400
+  gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
 
-  # SmBios
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Xiaomi Inc"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco X3 NFC"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"M2007J20CG"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco_X3_NFC_M2007J20CG"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco X3 NFC"
+  #
+  # Platform PEI
+  #
+  gQcomPkgTokenSpaceGuid.PcdPlatformType|"WP"
 
-  # Simple FrameBuffer
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2400
-  gSiliciumPkgTokenSpaceGuid.PcdMipiFrameBufferColorDepth|32
-
-  # Platform Pei
-  gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-
-  # Dynamic RAM Start Address
-  gQcomPkgTokenSpaceGuid.PcdRamPartitionBase|0xA4500000
-
-  # SD Card Slot
+  #
+  # Storage
+  #
   gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
 
-  # USB Controller
-  gQcomPkgTokenSpaceGuid.PcdStartUsbController|TRUE
-  
-[PcdsDynamicDefault]
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1080
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2400
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|126
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|135
-  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|126
+[LibraryClasses]
+  #
+  # Memory Libraries
+  #
+  MemoryMapLib|suryaPkg/Library/MemoryMapLib/MemoryMapLib.inf
 
-!include SM7150Pkg/SM7150Pkg.dsc.inc
+  #
+  # QCOM Libraries
+  #
+  ConfigurationMapLib|suryaPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf

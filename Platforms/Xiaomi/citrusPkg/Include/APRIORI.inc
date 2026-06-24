@@ -1,26 +1,18 @@
 APRIORI DXE {
-  # First, install the PCD driver and call DxeInit
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
   INF Binaries/citrus/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
 
-  INF Binaries/citrus/MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/RscRtDxe.inf
-  INF Binaries/citrus/MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/SCHandlerRtDxe.inf
+  INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
+  INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-
-  # Next, install cpu protocol and enable the interrupt controller
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-
-  # Core Drivers
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/citrus/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/citrus/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -31,9 +23,6 @@ APRIORI DXE {
   INF Binaries/citrus/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/VcsDxe/VcsDxe.inf
   INF Binaries/citrus/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
   INF Binaries/citrus/QcomPkg/Drivers/ShmBridgeDxe/ShmBridgeDxeLA.inf
   INF Binaries/citrus/QcomPkg/Drivers/TzDxe/ScmDxeLA.inf
     

@@ -21,23 +21,18 @@
   INF MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
   INF MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf
   INF MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitterDxe.inf
-
-  INF Binaries/nabu/MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
-
+  INF MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
   INF MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf
 
   INF Binaries/nabu/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/nabu/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
   INF Binaries/nabu/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/nabu/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/nabu/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/nabu/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/nabu/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
   INF Binaries/nabu/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
@@ -62,9 +57,8 @@
   INF Binaries/nabu/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
   INF Binaries/nabu/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/nabu/QcomPkg/Drivers/UFSDxe/UFSDxe.inf
-  INF Binaries/nabu/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
 
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
+  INF Binaries/nabu/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/nabu/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
@@ -86,7 +80,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/nabu/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf

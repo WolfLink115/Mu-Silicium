@@ -1,6 +1,4 @@
 APRIORI DXE {
-
-  # First, install the PCD driver and call DxeInit
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
@@ -9,19 +7,12 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-
-  # Next, install cpu protocol and enable the interrupt controller
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-
-  # Core Drivers
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/cepheus/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/cepheus/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/cepheus/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/cepheus/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -33,14 +24,11 @@ APRIORI DXE {
   INF Binaries/cepheus/QcomPkg/Drivers/RpmhDxe/RpmhDxe.inf
   INF Binaries/cepheus/QcomPkg/Drivers/PdcDxe/PdcDxe.inf
   INF Binaries/cepheus/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-	
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-	
   INF Binaries/cepheus/QcomPkg/Drivers/ShmBridgeDxe/ShmBridgeDxeLA.inf
   INF Binaries/cepheus/QcomPkg/Drivers/TzDxe/ScmDxeLA.inf
 
-  INF Binaries/cepheus/MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
-  INF Binaries/cepheus/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
+  INF MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
+  INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
   INF Binaries/cepheus/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
@@ -91,6 +79,8 @@ APRIORI DXE {
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
+  INF Binaries/cepheus/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf
+  INF Binaries/cepheus/QcomPkg/Drivers/UsbDeviceDxe/UsbDeviceDxe.inf
   INF Binaries/cepheus/QcomPkg/Drivers/UsbConfigDxe/UsbConfigDxe.inf
   INF Binaries/cepheus/QcomPkg/Drivers/TsensDxe/TsensDxe.inf
   INF Binaries/cepheus/QcomPkg/Drivers/LimitsDxe/LimitsDxe.inf

@@ -1,5 +1,4 @@
 APRIORI DXE {
-  # First, install the PCD driver and call DxeInit
   INF MdeModulePkg/Core/Dxe/DxeMain.inf
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
@@ -8,20 +7,13 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-
-  # Next, install cpu protocol and enable the interrupt controller
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-
-  # Core Drivers
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
   INF MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf
 
   INF Binaries/equuleus/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/equuleus/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
@@ -30,16 +22,12 @@ APRIORI DXE {
 
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
 
-  # GLinkDxe
   INF Binaries/equuleus/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/RpmhDxe/RpmhDxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/PdcDxe/PdcDxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/ClockDxe/ClockDxe.inf
-
-  INF QcomPkg/Drivers/ClockSpeedUpDxe/ClockSpeedUpDxe.inf
-
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/equuleus/QcomPkg/Drivers/CPRDxe/CPRDxe.inf
 !endif
@@ -53,12 +41,7 @@ APRIORI DXE {
 
   INF FatPkg/EnhancedFatDxe/Fat.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
-
-  # QdssDxe
-
   INF MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf
-
-  # DppDxe
   INF EmbeddedPkg/EmbeddedMonotonicCounter/EmbeddedMonotonicCounter.inf
   INF MdeModulePkg/Universal/ResetSystemRuntimeDxe/ResetSystemRuntimeDxe.inf
   INF EmbeddedPkg/RealTimeClockRuntimeDxe/RealTimeClockRuntimeDxe.inf
@@ -72,9 +55,7 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
 
   INF Binaries/equuleus/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
-  # I2CDxe
   INF Binaries/equuleus/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
-  # SPIDxe
   INF Binaries/equuleus/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
   INF Binaries/equuleus/QcomPkg/Drivers/AdcDxe/AdcDxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/UsbPwrCtrlDxe/UsbPwrCtrlDxe.inf
@@ -86,6 +67,8 @@ APRIORI DXE {
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
+  INF Binaries/equuleus/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf
+  INF Binaries/equuleus/QcomPkg/Drivers/UsbDeviceDxe/UsbDeviceDxe.inf
   INF Binaries/equuleus/QcomPkg/Drivers/UsbConfigDxe/UsbConfigDxe.inf
 
   INF EmbeddedPkg/SimpleTextInOutSerial/SimpleTextInOutSerial.inf
@@ -98,6 +81,7 @@ APRIORI DXE {
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/equuleus/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
+  INF QcomPkg/Drivers/DisplayReEnablerDxe/DisplayReEnablerDxe.inf
 !else
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif

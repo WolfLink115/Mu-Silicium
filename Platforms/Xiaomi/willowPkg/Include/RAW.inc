@@ -1,8 +1,4 @@
-  FILE FREEFORM = A91D838E-A5FA-4138-825D-455E2303079E {
-    SECTION UI = "BDS_Menu.cfg"
-    SECTION RAW = Binaries/willow/RawFiles/BDS_Menu.cfg
-  }
-
+!if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   FILE FREEFORM = 02E0AF91-5D44-424F-828F-211ADC520B0C {
     SECTION UI = "Panel_truly_td4330_fhd_cmd.xml"
     SECTION RAW = Binaries/willow/RawFiles/Panel_truly_td4330_fhd_cmd.xml
@@ -22,6 +18,7 @@
     SECTION UI = "Panel_huaxing_ft8719_fhd_vid.xml"
     SECTION RAW = Binaries/willow/RawFiles/Panel_huaxing_ft8719_fhd_vid.xml
   }
+!endif
 
   FILE FREEFORM = A1E235DE-E825-4591-9623-C43175811826 {
     SECTION UI = "SecParti.cfg"

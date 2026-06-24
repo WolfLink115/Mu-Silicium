@@ -30,23 +30,18 @@
   INF Binaries/j706f/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
   INF Binaries/j706f/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
-  INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF Binaries/j706f/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/j706f/QcomPkg/Drivers/SmemDxe/SmemDxe.inf
-
-  INF QcomPkg/Drivers/DynamicRamDxe/DynamicRamDxe.inf
-
   INF Binaries/j706f/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/j706f/QcomPkg/Drivers/NpaDxe/NpaDxe.inf
   INF Binaries/j706f/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
   INF Binaries/j706f/QcomPkg/Drivers/RpmhDxe/RpmhDxe.inf
-
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/j706f/QcomPkg/Drivers/CPRDxe/CPRDxe.inf
 !endif
-
   INF Binaries/j706f/QcomPkg/Drivers/PdcDxe/PdcDxe.inf
 
   INF MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
@@ -87,7 +82,6 @@
 
   INF MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
-  INF MdeModulePkg/Bus/Usb/UsbMouseAbsolutePointerDxe/UsbMouseAbsolutePointerDxe.inf
   INF MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
 
   INF Binaries/j706f/QcomPkg/Drivers/UsbMsdDxe/UsbMsdDxe.inf
