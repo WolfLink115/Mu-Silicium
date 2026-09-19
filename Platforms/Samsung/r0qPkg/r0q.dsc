@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy S22 5G"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"r0q"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_S22_5G_r0q"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy S22 5G"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy S22 5G"
 
   #
   # Simple Frame Buffer
@@ -59,13 +59,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703B920
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703B0C8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -77,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|r0qPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  r0q/AcpiTables.inf

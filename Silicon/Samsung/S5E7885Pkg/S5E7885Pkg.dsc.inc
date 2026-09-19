@@ -14,12 +14,23 @@
   #
   USE_PHYSICAL_TIMER                         = 0
 
+  #
+  # KEP
+  #
+  HAS_CNTFRQ_EL0_EMPTY_ERRATA                = 0
+
 !include SamsungPkg/SamsungPkg.dsc.inc
 
 [BuildOptions]
   *_*_AARCH64_CC_FLAGS = -march=armv8-a+crypto+rcpc
 
 [PcdsFixedAtBuild]
+  #
+  # ACPI
+  #
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x2035383837453553
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x7885
+
   #
   # CPU
   #
@@ -37,12 +48,6 @@
   #
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Exynos (TM) 7885 @ 2.20 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"S5E7885"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2200
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x40                         # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x40                         # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x800                            # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|1866                                 # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
   #
@@ -51,6 +56,7 @@
   PlatformSecLib|S5E7885Pkg/Library/PlatformSecLib/PlatformSecLib.inf
 
   #
-  # Custom Libraries
+  # IO Libraries
   #
-  GpioBankLib|S5E7885Pkg/Library/GpioBankLib/GpioBankLib.inf
+  GpioLib|S5E7885Pkg/Library/GpioLib/GpioLib.inf
+  SpeedyLib|S5E7885Pkg/Library/SpeedyLib/SpeedyLib.inf

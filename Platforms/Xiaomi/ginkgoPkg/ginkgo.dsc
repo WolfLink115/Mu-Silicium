@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Redmi Note 8"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"ginkgo"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Redmi_Note_8_ginkgo"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Redmi Note 8"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Redmi Note 8"
 
   #
   # Simple Frame Buffer
@@ -60,11 +60,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -75,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|ginkgoPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  ginkgo/AcpiTables.inf

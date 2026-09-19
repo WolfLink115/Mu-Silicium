@@ -82,14 +82,17 @@ READ_LOCK_STATUS   = TRUE
   !include Include/APRIORI.inc
   !include Include/DXE.inc
 
+  # RAM Manager
+  INF SiliciumPkg/Drivers/RamManagerDxe/RamManagerDxe.inf
+
   # SmBios
   INF MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
-  INF NvidiaPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
+  INF SiliciumPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
 
   # ACPI
-  INF MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
-  INF MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
-  !include Include/ACPI.inc
+  #INF MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
+  #INF MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
+  #INF RuleOverride = ACPITABLE nx/AcpiTables.inf
 
   # Device Tree
   #INF EmbeddedPkg/Drivers/DtPlatformDxe/DtPlatformDxe.inf
@@ -98,6 +101,10 @@ READ_LOCK_STATUS   = TRUE
   #  SECTION RAW = nxPkg/FdtBlob/tegra210-nintendo-icosa.dtb
 !elseif $(DEVICE_MODEL) == 1
   #  SECTION RAW = nxPkg/FdtBlob/tegra214-nintendo-iowa.dtb
+!elseif $(DEVICE_MODEL) == 2
+  #  SECTION RAW = nxPkg/FdtBlob/tegra214-nintendo-hoag.dtb
+!elseif $(DEVICE_MODEL) == 3
+  #  SECTION RAW = nxPkg/FdtBlob/tegra214-nintendo-aula.dtb
 !endif
   #  SECTION UI = "DeviceTreeBlob"
   #}

@@ -54,7 +54,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco F6"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"peridot"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco_F6_peridot"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco F6"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Poco F6"
 
   #
   # Simple Frame Buffer
@@ -67,13 +67,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703FD38
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703F0E8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -85,3 +78,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|peridotPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  peridot/AcpiTables.inf

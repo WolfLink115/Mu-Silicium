@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Mi 8 Pro"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"equuleus"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Mi 8_pro_equuleus"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Mi 8 Pro"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Mi 8 Pro"
 
   #
   # Simple Frame Buffer
@@ -60,11 +60,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -75,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|equuleusPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #equuleus/AcpiTables.inf

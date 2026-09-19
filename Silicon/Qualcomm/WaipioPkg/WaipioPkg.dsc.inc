@@ -29,9 +29,10 @@
 
 [PcdsFixedAtBuild]
   #
-  # Platform PEI
+  # ACPI
   #
-  gQcomPkgTokenSpaceGuid.PcdFvDecompressAddr|0xA7044830
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x20204F4950494157
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x8450
 
   #
   # CPU
@@ -48,15 +49,8 @@
   #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 8 Gen 1"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 8 Gen 1 @ 3.00 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8450"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2995
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x1800
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|3200
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|35
 
 [LibraryClasses]
   #
@@ -68,11 +62,6 @@
   # ACPI Libraries
   #
   AcpiTableUpdateLib|WaipioPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf
-
-  #
-  # Custom Libraries
-  #
-  RFSProtectionLib|WaipioPkg/Library/RFSProtectionLib/RFSProtectionLib.inf
 
 [Components]
   #

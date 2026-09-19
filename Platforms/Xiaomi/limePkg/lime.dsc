@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Redmi 9T"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"lime"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Redmi_9T_lime"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Redmi 9T"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Redmi 9T"
 
   #
   # Simple Frame Buffer
@@ -60,11 +60,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -75,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|limePkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  lime/AcpiTables.inf

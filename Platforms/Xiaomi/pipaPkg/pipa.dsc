@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Pad 6"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"pipa"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"23043RP34G"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"M82"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"M82"
 
   #
   # Simple Frame Buffer
@@ -67,11 +67,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -82,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|pipaPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  pipa/AcpiTables.inf

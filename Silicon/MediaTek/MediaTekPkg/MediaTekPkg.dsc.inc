@@ -11,10 +11,9 @@
 
 [PcdsFixedAtBuild]
   #
-  # SMBIOS
+  # ACPI
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorSocket|"MediaTek"
-  gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorManufacturer|"MediaTek Inc."
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemId|"MTK   "
 
 [LibraryClasses]
   #
@@ -22,16 +21,17 @@
   #
   ArmSmcLib|MdePkg/Library/ArmSmcLib/ArmSmcLib.inf
 
-[Components]
   #
-  # SmBios
+  # Memory Libraries
   #
-  MediaTekPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
+  RamManagerLib|MediaTekPkg/Library/RamManagerLib/RamManagerLib.inf
 
+[Components]
   #
   # Custom Drivers
   #
   MediaTekPkg/Drivers/GpioDxe/GpioDxe.inf
+  MediaTekPkg/Drivers/ClockDxe/ClockDxe.inf
   MediaTekPkg/Drivers/PmicWrapperDxe/PmicWrapperDxe.inf
   MediaTekPkg/Drivers/MT6358PmicDxe/MT6358PmicDxe.inf
   MediaTekPkg/Drivers/MsdcDxe/MsdcDxe.inf

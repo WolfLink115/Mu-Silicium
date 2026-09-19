@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy S21 FE"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"r9qb2"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_S21_FE_r9qb2"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy S21 FE"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy S21 FE"
 
   #
   # Simple Frame Buffer
@@ -66,12 +66,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37980
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -83,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|r9qb2Pkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  r9qb2/AcpiTables.inf

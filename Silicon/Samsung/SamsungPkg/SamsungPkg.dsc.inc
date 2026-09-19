@@ -9,36 +9,86 @@
 
 !include SiliciumPkg/SiliciumPkg.dsc.inc
 
+[BuildOptions]
+  *_CLANGPDB_AARCH64_CC_FLAGS = -D HAS_CNTFRQ_EL0_EMPTY_ERRATA=$(HAS_CNTFRQ_EL0_EMPTY_ERRATA)
+
 [PcdsFixedAtBuild]
   #
-  # SMBIOS
+  # ACPI
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorSocket|"Samsung"
-  gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorManufacturer|"Samsung Electronics Co., Ltd."
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemId|"SAMSUN"
 
 [LibraryClasses]
   #
-  # ARM Libraries
+  # Memory Libraries
   #
-  ArmSmcLib|SamsungPkg/Library/ArmSmcLib/ArmSmcLib.inf
+  RamManagerLib|SamsungPkg/Library/RamManagerLib/RamManagerLib.inf
 
   #
-  # Custom Libraries
+  # IO Libraries
   #
-  PlatformUfsLib|SamsungPkg/Library/PlatformUfsLibNull/PlatformUfsLibNull.inf
+  GpioLib|SamsungNullPkg/Library/GpioNullLib/GpioNullLib.inf
+  SpeedyLib|SamsungNullPkg/Library/SpeedyNullLib/SpeedyNullLib.inf
+  HsI2cLib|SamsungNullPkg/Library/HsI2cNullLib/HsI2cNullLib.inf
+
+  #
+  # Power Management Libraries
+  #
+  PmicLib|SamsungNullPkg/Library/PmicNullLib/PmicNullLib.inf
+
+  #
+  # Storage Libraries
+  #
+  PlatformUfsLib|SamsungNullPkg/Library/PlatformUfsLibNull/PlatformUfsLibNull.inf
+  PlatformMshcLib|SamsungNullPkg/Library/PlatformMshcLibNull/PlatformMshcLibNull.inf
   UfsCalAdapterLib|SamsungPkg/Library/UfsCalAdapterLib/UfsCalAdapterLib.inf
+
+  #
+  # USB Libraries
+  #
+  PlatformUsbfnLib|SamsungNullPkg/Library/PlatformUsbfnLibNull/PlatformUsbfnLibNull.inf
+
+  #
+  # Samsung Libraries
+  #
+  UsiLib|SamsungNullPkg/Library/UsiNullLib/UsiNullLib.inf
+
+  #
+  # BDS Libraries
+  #
+  ErrataPatchesLib|SamsungPkg/Library/ErrataPatchesLib/ErrataPatchesLib.inf
 
 [Components]
   #
-  # SMBIOS
+  # Storage Drivers
   #
-  SamsungPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
+  SamsungPkg/Drivers/UfsDxe/UfsDxe.inf
+  SamsungPkg/Drivers/MshcDxe/MshcDxe.inf
 
   #
-  # Custom Drivers
+  # IO Drivers
   #
-  SamsungPkg/Drivers/ChipDataDxe/ChipDataDxe.inf
-  SamsungPkg/Drivers/DdrInfoDxe/DdrInfoDxe.inf
   SamsungPkg/Drivers/GpioDxe/GpioDxe.inf
   SamsungPkg/Drivers/SpeedyDxe/SpeedyDxe.inf
-  SamsungPkg/Drivers/UfsDxe/UfsDxe.inf
+  SamsungPkg/Drivers/HsI2cDxe/HsI2cDxe.inf
+
+  #
+  # Power Management Drivers
+  #
+  SamsungPkg/Drivers/PmicDxe/PmicDxe.inf
+
+  #
+  # USB Drivers
+  #
+  SamsungPkg/Drivers/UsbfnDwc3Dxe/UsbfnDwc3Dxe.inf
+
+  #
+  # RNG Drivers
+  #
+  SamsungPkg/Drivers/RngDxe/RngDxe.inf
+
+  #
+  # Samsung Drivers
+  #
+  SamsungPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
+  SamsungPkg/Drivers/UsiDxe/UsiDxe.inf

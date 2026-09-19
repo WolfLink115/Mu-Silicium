@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"9"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"lemonade"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"9_lemonade"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"9"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"9"
 
   #
   # Simple Frame Buffer
@@ -66,12 +66,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37998
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -83,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|lemonadePkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  lemonade/AcpiTables.inf

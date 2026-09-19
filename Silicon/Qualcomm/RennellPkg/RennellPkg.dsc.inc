@@ -29,6 +29,12 @@
 
 [PcdsFixedAtBuild]
   #
+  # ACPI
+  #
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x204C4C454E4E4552
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x7125
+
+  #
   # CPU
   #
   gArmPlatformTokenSpaceGuid.PcdCoreCount|8
@@ -47,17 +53,15 @@
   gArmTokenSpaceGuid.PcdArmArchTimerIntrNum|18
 
   #
+  # Shared RFS Area
+  #
+  gQcomPkgTokenSpaceGuid.PcdDestinationVmCount|2
+
+  #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 720G"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 720G @ 2.30 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM7125"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2300
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x100
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|2100
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
   #
@@ -69,8 +73,3 @@
   # ACPI Libraries
   #
   AcpiTableUpdateLib|RennellPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf
-
-  #
-  # Custom Libraries
-  #
-  RFSProtectionLib|RennellPkg/Library/RFSProtectionLib/RFSProtectionLib.inf

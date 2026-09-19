@@ -27,6 +27,13 @@
   FLASH_DEFINITION               = infinitiPkg/infiniti.fdf
   USE_CUSTOM_DISPLAY_DRIVER      = 0
 
+  #
+  # 0 = SM8850-AC
+  # 1 = SM8850-5-AC
+  # 2 = SM8850-1-AD
+  #
+  SOC_TYPE                       = 0
+
 !include KaanapaliPkg/KaanapaliPkg.dsc.inc
 
 [PcdsFixedAtBuild]
@@ -48,7 +55,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"15"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"infiniti"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"CPH2747"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"24831"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"24831"
 
   #
   # Simple Frame Buffer
@@ -61,13 +68,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xC683F118
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xC683FE98
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -79,3 +79,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|infinitiPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #infiniti/AcpiTables.inf

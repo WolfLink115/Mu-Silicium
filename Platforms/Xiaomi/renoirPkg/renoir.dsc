@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"11 Lite 5G"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"renoir"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"11_Lite_5G_renoir"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"11 Lite 5G"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"11 Lite 5G"
 
   #
   # Simple Frame Buffer
@@ -59,12 +59,10 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37980
 
   #
   # Storage
   #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
   gQcomPkgTokenSpaceGuid.PcdStorageIsUfs3|FALSE
 
 [LibraryClasses]
@@ -77,3 +75,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|renoirPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  renoir/AcpiTables.inf

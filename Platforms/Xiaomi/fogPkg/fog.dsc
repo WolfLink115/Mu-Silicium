@@ -52,7 +52,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Redmi 10C"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"fog"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Redmi_10C_fog"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Redmi 10C"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Redmi 10C"
 
   #
   # Simple Frame Buffer
@@ -66,11 +66,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -81,3 +76,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|fogPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  fog/AcpiTables.inf

@@ -14,12 +14,23 @@
   #
   USE_PHYSICAL_TIMER                         = 1
 
+  #
+  # KEP
+  #
+  HAS_CNTFRQ_EL0_EMPTY_ERRATA                = 1
+
 !include SamsungPkg/SamsungPkg.dsc.inc
 
 [BuildOptions]
   *_*_AARCH64_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
 
 [PcdsFixedAtBuild]
+  #
+  # ACPI
+  #
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x2030313839453553
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x9810
+
   #
   # CPU
   #
@@ -38,23 +49,15 @@
   gSiliciumPkgTokenSpaceGuid.PcdTimerFreqOverwrite|26000000
 
   #
-  # DDR Info
+  # RAM Manager
   #
-  gSamsungPkgTokenSpaceGuid.PcdDdrInfoOffset|0x1EC00
-  gSamsungPkgTokenSpaceGuid.PcdDdrSizeInfoOffset|0x848
+  gSamsungPkgTokenSpaceGuid.PcdHasSecurePgtbl|TRUE
 
   #
   # SMBIOS
   #
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Exynos (TM) 9810 @ 2.90 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"S5E9810"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2900
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x100                       # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x80                        # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x800                           # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x1000                          # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|1800                                # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
   #
@@ -63,6 +66,23 @@
   PlatformSecLib|S5E9810Pkg/Library/PlatformSecLib/PlatformSecLib.inf
 
   #
-  # Custom Libraries
+  # UEFI Libraries
   #
-  GpioBankLib|S5E9810Pkg/Library/GpioBankLib/GpioBankLib.inf
+  HwResetSystemLib|S5E9810Pkg/Library/ResetSystemLib/ResetSystemLib.inf
+  ResetSystemLib|S5E9810Pkg/Library/ResetSystemLib/ResetSystemLib.inf
+
+  #
+  # IO Libraries
+  #
+  GpioLib|S5E9810Pkg/Library/GpioLib/GpioLib.inf
+  SpeedyLib|S5E9810Pkg/Library/SpeedyLib/SpeedyLib.inf
+
+  #
+  # Power Management Libraries
+  #
+  PmicLib|S5E9810Pkg/Library/PmicLib/PmicLib.inf
+
+  #
+  # Storage Libraries
+  #
+  PlatformUfsLib|S5E9810Pkg/Library/PlatformUfsLib/PlatformUfsLib.inf

@@ -14,16 +14,9 @@
 
 [PcdsFixedAtBuild]
   #
-  # SMBIOS
+  # ACPI
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorSocket|"Qualcomm"
-  gSiliciumPkgTokenSpaceGuid.PcdSmBiosProcessorManufacturer|"Qualcomm Technologies, Inc."
-
-  #
-  # Mass Storage
-  #
-  gSiliciumPkgTokenSpaceGuid.PcdAlternativeAppFile|{ 0xD8, 0xEC, 0x14, 0xFB, 0x32, 0x94, 0xB8, 0x48, 0xA6, 0x92, 0xAE, 0x4B, 0xC1, 0x9D, 0x56, 0x8B }
-  gSiliciumPkgTokenSpaceGuid.PcdAlternativeAppFileName|"Mass Storage"
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemId|"QCOM  "
 
 [LibraryClasses]
   #
@@ -35,11 +28,19 @@
   # Memory Libraries
   #
   RamManagerLib|QcomPkg/Library/RamManagerLib/RamManagerLib.inf
+  RfsProtectionLib|QcomPkg/Library/RfsProtectionLib/RfsProtectionLib.inf
 
   #
   # BDS Libraries
   #
+  DeviceBootManagerLib|QcomPkg/Library/PlatformBootManagerLib/PlatformBootManagerLib.inf
+  PlatformBootOptionsLib|QcomPkg/Library/PlatformBootOptionsLib/PlatformBootOptionsLib.inf
   ErrataPatchesLib|QcomPkg/Library/ErrataPatchesLib/ErrataPatchesLib.inf
+
+  #
+  # SMBIOS Libraries
+  #
+  SmBiosTableLib|QcomPkg/Library/SmBiosTableLib/SmBiosTableLib.inf
 
   #
   # Custom Libraries
@@ -49,15 +50,9 @@
 
 [Components]
   #
-  # SMBIOS
-  #
-  QcomPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
-
-  #
   # Custom Drivers
   #
   QcomPkg/Drivers/DisplayReEnablerDxe/DisplayReEnablerDxe.inf
-  QcomPkg/Drivers/PeripheralInitDxe/PeripheralInitDxe.inf
 
   #
   # Custom Apps

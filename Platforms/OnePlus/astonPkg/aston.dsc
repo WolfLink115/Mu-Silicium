@@ -53,14 +53,12 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Ace 3"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"aston"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"PJE110"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"23801"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"23801"
 !elseif $(DEVICE_MODEL) == 1
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"12R"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"aston"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"CPH2585"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"23861"
-!else
-!error "Invalid Model Type! 0 or 1 are Valid Model Types."
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"23861"
 !endif
 
   #
@@ -74,13 +72,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703A0C8
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703A950
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -92,3 +83,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|astonPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  aston/AcpiTables.inf

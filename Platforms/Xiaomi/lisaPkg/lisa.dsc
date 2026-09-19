@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"11 Lite 5G NE"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"lisa"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"11_Lite_5G_NE_lisa"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"11 Lite 5G NE"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"11 Lite 5G NE"
 
   #
   # Simple Frame Buffer
@@ -66,12 +66,10 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37980
 
   #
   # Storage
   #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
   gQcomPkgTokenSpaceGuid.PcdStorageIsUfs3|FALSE
 
 [LibraryClasses]
@@ -84,3 +82,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|lisaPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  lisa/AcpiTables.inf

@@ -36,7 +36,7 @@
   #
   # UEFI Stack
   #
-  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x40000000
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x44000000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
   #
@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy Tab A10.1"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"gtaxllte"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_Tab_A10.1_gtaxllte"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy Tab A10.1"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy Tab A10.1"
 
   #
   # Simple Frame Buffer
@@ -67,6 +67,11 @@
   KeypadDeviceLib|gtaxlltePkg/Library/KeypadDeviceLib/KeypadDeviceLib.inf
 
 [Components]
+  #
+  # ACPI Tables
+  #
+  gtaxllte/AcpiTables.inf
+
   #
   # Input
   #

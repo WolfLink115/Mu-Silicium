@@ -29,9 +29,10 @@
 
 [PcdsFixedAtBuild]
   #
-  # Platform PEI
+  # ACPI
   #
-  gQcomPkgTokenSpaceGuid.PcdFvDecompressAddr|0x9FC403C8
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x20414E494148414C
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x8350
 
   #
   # CPU
@@ -46,31 +47,24 @@
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x17A60000
 
   #
+  # Shared RFS Area
+  #
+  gQcomPkgTokenSpaceGuid.PcdDestinationVmCount|3
+
+  #
   # SMBIOS
   #
-!if $(SOC_TYPE) == 2
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 888+"
-!else
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 888"
-!endif
+!if $(SOC_TYPE) != 2
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 888 @ 2.84 GHz"
 !if $(SOC_TYPE) == 0
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8350"
 !elseif $(SOC_TYPE) == 1
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8350-AB"
-!elseif $(SOC_TYPE) == 2
+!endif
+!else
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 888+ @ 3.00 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8350-AC"
 !endif
-!if $(SOC_TYPE) == 1
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2995
-!else
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2840
-!endif
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x100
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x100
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x1000
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|3200
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|35
 
 [LibraryClasses]
   #
@@ -82,8 +76,3 @@
   # ACPI Libraries
   #
   AcpiTableUpdateLib|LahainaPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf
-
-  #
-  # Custom Libraries
-  #
-  RFSProtectionLib|LahainaPkg/Library/RFSProtectionLib/RFSProtectionLib.inf

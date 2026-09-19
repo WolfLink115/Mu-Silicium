@@ -56,11 +56,9 @@
 !elseif $(DEVICE_MODEL) == 1
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"POCO X2"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"phoenixin"
-!else
-!error "Invalid Model Type! 0 and 1 are Valid Model Types."
 !endif
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"MZB9011IN"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"G7B"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"G7B"
 
   #
   # Simple Frame Buffer
@@ -74,11 +72,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"WP"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -89,3 +82,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|phoenixPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #phoenix/AcpiTables.inf

@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"POCO X3 NFC"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"surya"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"M2007J20CG"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"J20CG"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"J20CG"
 
   #
   # Simple Frame Buffer
@@ -67,11 +67,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"WP"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -82,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|suryaPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  surya/AcpiTables.inf

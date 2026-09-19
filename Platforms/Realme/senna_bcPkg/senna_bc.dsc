@@ -29,10 +29,10 @@
 
   #
   # 0 = SM8475
-  # 1 = SM8475-AB
+  # 1 = SM8475    (Overclocked)
   # 2 = SM7475-AB
   #
-  SOC_TYPE                       = 1
+  SOC_TYPE                       = 0
 
 !include PalimaPkg/PalimaPkg.dsc.inc
 
@@ -56,19 +56,17 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"GT Neo5 150W"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"senna_b"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"GT_Neo5_150W_senna_b"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"GT Neo5 150W"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"GT Neo5 150W"
 !elseif $(DEVICE_MODEL) == 1
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"GT Neo5 240W"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"senna_c"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"GT_Neo5_240W_senna_c"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"GT Neo5 240W"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"GT Neo5 240W"
 !elseif $(DEVICE_MODEL) == 2
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"GT3"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"senna_c"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"GT3_senna_c"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"GT3"
-!else
-!error "Invalid Model! specify "0" for GT Neo5 150W or "1" for GT Neo5 240W or "2" for GT3"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"GT3"
 !endif
 
   #
@@ -82,13 +80,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0C8
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703C928
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -100,3 +91,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|senna_bcPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #senna_bc/AcpiTables.inf

@@ -36,7 +36,7 @@
   #
   # UEFI Stack
   #
-  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0xE8300000
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0xEBE00000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
   #
@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy S20 FE"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"r8s"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_S20_FE_r8s"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy S20 FE"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy S20 FE"
 
   #
   # Simple Frame Buffer
@@ -67,6 +67,11 @@
   KeypadDeviceLib|r8sPkg/Library/KeypadDeviceLib/KeypadDeviceLib.inf
 
 [Components]
+  #
+  # ACPI Tables
+  #
+  #r8s/AcpiTables.inf
+
   #
   # Input
   #

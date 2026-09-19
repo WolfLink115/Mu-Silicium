@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"8T"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"kebab"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"8T_kebab"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"8T"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"8T"
 
   #
   # Simple Frame Buffer
@@ -67,11 +67,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -82,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|kebabPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  kebab/AcpiTables.inf

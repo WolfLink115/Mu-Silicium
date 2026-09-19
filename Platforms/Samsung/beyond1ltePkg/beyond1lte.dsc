@@ -36,7 +36,7 @@
   #
   # UEFI Stack
   #
-  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0xC9300000
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0xC9200000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
   #
@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy S10"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"beyond1lte"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_S10_beyond1lte"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy S10"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy S10"
 
   #
   # Simple Frame Buffer
@@ -67,6 +67,11 @@
   KeypadDeviceLib|beyond1ltePkg/Library/KeypadDeviceLib/KeypadDeviceLib.inf
 
 [Components]
+  #
+  # ACPI Tables
+  #
+  #beyond1lte/AcpiTables.inf
+
   #
   # Input
   #

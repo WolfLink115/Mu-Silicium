@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Mi A3"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"laurel_sprout"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Mi_A3_laurel_sprout"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Mi A3"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Mi A3"
 
   #
   # Simple Frame Buffer
@@ -60,11 +60,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -75,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|laurel_sproutPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #laurel_sprout/AcpiTables.inf

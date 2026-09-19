@@ -14,12 +14,23 @@
   #
   USE_PHYSICAL_TIMER                         = 1
 
+  #
+  # KEP
+  #
+  HAS_CNTFRQ_EL0_EMPTY_ERRATA                = 0
+
 !include SamsungPkg/SamsungPkg.dsc.inc
 
 [BuildOptions]
   *_*_AARCH64_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
 
 [PcdsFixedAtBuild]
+  #
+  # ACPI
+  #
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x2030323839453553
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x9820
+
   #
   # CPU
   #
@@ -33,30 +44,22 @@
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x10102000
 
   #
-  # DDR Info
+  # RAM Manager
   #
-  gSamsungPkgTokenSpaceGuid.PcdDdrInfoOffset|0x2AC00
-  gSamsungPkgTokenSpaceGuid.PcdDdrSizeInfoOffset|0x848
-
-  #
-  # PMIC
-  #
-  gSamsungPkgTokenSpaceGuid.PcdInitS2mps22|FALSE
+  gSamsungPkgTokenSpaceGuid.PcdHasSecurePgtbl|TRUE
 
   #
   # SMBIOS
   #
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Exynos (TM) 9820 @ 2.73 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"S5E9820"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2730
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x20                         # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x20                         # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x80                             # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x400                            # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|2730                                 # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
+  #
+  # SEC Libraries
+  #
+  PlatformSecLib|S5E9820Pkg/Library/PlatformSecLib/PlatformSecLib.inf
+
   #
   # UEFI Libraries
   #
@@ -64,17 +67,17 @@
   ResetSystemLib|S5E9820Pkg/Library/ResetSystemLib/ResetSystemLib.inf
 
   #
-  # SEC Libraries
+  # IO Libraries
   #
-  PlatformSecLib|S5E9820Pkg/Library/PlatformSecLib/PlatformSecLib.inf
+  GpioLib|S5E9820Pkg/Library/GpioLib/GpioLib.inf
+  SpeedyLib|S5E9820Pkg/Library/SpeedyLib/SpeedyLib.inf
 
   #
-  # Custom Libraries
+  # Power Management Libraries
   #
-  GpioBankLib|S5E9820Pkg/Library/GpioBankLib/GpioBankLib.inf
+  PmicLib|S5E9820Pkg/Library/PmicLib/PmicLib.inf
 
-[Components]
   #
-  # Custom Drivers
+  # Samsung Libraries
   #
-  SamsungPkg/Drivers/PmicDxe/S2mps1922Dxe.inf
+  UsiLib|S5E9820Pkg/Library/UsiLib/UsiLib.inf

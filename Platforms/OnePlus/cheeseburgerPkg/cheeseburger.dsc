@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"5"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"cheeseburger"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"5_cheeseburger"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"5"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"5"
 
   #
   # Simple Frame Buffer
@@ -60,11 +60,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -75,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|cheeseburgerPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #cheeseburger/AcpiTables.inf

@@ -8,8 +8,9 @@
 ##
 
 [BuildOptions]
-  *_CLANGPDB_*_CC_FLAGS = -Wno-unused-const-variable -Wno-sometimes-uninitialized -Wno-unaligned-access -Wno-deprecated-non-prototype
-  *_CLANGPDB_*_CC_FLAGS = -D CLANG -D ENABLE_SECUREBOOT=$(ENABLE_SECUREBOOT)
+  RELEASE_CLANGPDB_*_CC_FLAGS = -D MDEPKG_NDEBUG
+  *_CLANGPDB_*_CC_FLAGS       = -Wno-unused-const-variable -Wno-sometimes-uninitialized -Wno-unaligned-access -Wno-deprecated-non-prototype
+  *_CLANGPDB_*_CC_FLAGS       = -D CLANG -D ENABLE_SECUREBOOT=$(ENABLE_SECUREBOOT)
   *_CLANGPDB_AARCH64_CC_FLAGS = -D __DEPRECATED_AARCH64_4K_RUNTIME_GRANULARITY
 
 [BuildOptions.common.EDKII.SEC,BuildOptions.common.EDKII.MM_CORE_STANDALONE]
@@ -26,9 +27,15 @@
 
 [PcdsFixedAtBuild]
   #
+  # ACPI
+  #
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultCreatorId|0x4C495350
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultCreatorRevision|0x00000039
+
+  #
   # Firmware Details
   #
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"3.6"
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"3.9"
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"Project Silicium"
 
   #
@@ -80,7 +87,7 @@
   # Boot Manager
   #
   gEfiMdePkgTokenSpaceGuid.PcdPlatformBootTimeOut|3
-  gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerMenuFile|{ 0x88, 0x47, 0x3D, 0x64, 0xC8, 0x63, 0xD2, 0x40, 0xBD, 0x7A, 0x68, 0x42, 0xE6, 0x68, 0x50, 0xD1 }
+  gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerMenuFile|{ 0xDC, 0x5B, 0xC2, 0xEE, 0xF2, 0x67, 0x95, 0x4D, 0xB1, 0xD5, 0xF8, 0x1B, 0x20, 0x39, 0xD1, 0x1D }
   gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerInBootOrder|FALSE
   gEfiMdeModulePkgTokenSpaceGuid.PcdPlatformRecoverySupport|FALSE
 
@@ -127,6 +134,7 @@
   #
   ArmLib|ArmPkg/Library/ArmLib/ArmBaseLib.inf
   ArmSmcLib|MdePkg/Library/ArmSmcLib/ArmSmcLib.inf
+  ArmHvcLib|ArmPkg/Library/ArmHvcLib/ArmHvcLib.inf
   ArmMonitorLib|ArmPkg/Library/ArmMonitorLib/ArmMonitorLib.inf
 !if $(USE_PHYSICAL_TIMER) == 1
   ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf
@@ -176,6 +184,7 @@
   DmaLib|EmbeddedPkg/Library/CoherentDmaLib/CoherentDmaLib.inf
   HobLib|MdePkg/Library/DxeHobLib/DxeHobLib.inf
   RamManagerLib|SiliciumNullPkg/Library/RamManagerLibNull/RamManagerLibNull.inf
+  MemoryAllocationHelperLib|SiliciumPkg/Library/MemoryAllocationHelperLib/MemoryAllocationHelperLib.inf
 
   #
   # SEC Libraries
@@ -186,6 +195,7 @@
   PeCoffExtraActionLib|MdePkg/Library/BasePeCoffExtraActionLibNull/BasePeCoffExtraActionLibNull.inf
   PlatformPeiLib|SiliciumNullPkg/Library/PlatformPeiLibNull/PlatformPeiLibNull.inf
   PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf
+  PlatformSecLib|SiliciumNullPkg/Library/PlatformSecLibNull/PlatformSecLibNull.inf
 
   #
   # UEFI Libraries
@@ -210,7 +220,7 @@
   BootGraphicsProviderLib|SiliciumPkg/Library/BootGraphicsProviderLib/BootGraphicsProviderLib.inf
   FrameBufferBltLib|MdeModulePkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
   FrameBufferMemDrawLib|MsGraphicsPkg/Library/FrameBufferMemDrawLib/FrameBufferMemDrawLibDxe.inf
-  GraphicsConsoleHelperLib|PcBdsPkg/Library/GraphicsConsoleHelperLibNull/GraphicsConsoleHelperLibNull.inf
+  GraphicsConsoleHelperLib|PcBdsPkg/Library/GraphicsConsoleHelperLib/GraphicsConsoleHelper.inf
   DisplayDeviceStateLib|MsGraphicsPkg/Library/ColorBarDisplayDeviceStateLib/ColorBarDisplayDeviceStateLib.inf
   UiRectangleLib|MsGraphicsPkg/Library/BaseUiRectangleLib/BaseUiRectangleLib.inf
 
@@ -225,7 +235,9 @@
   # BDS Libraries
   #
   MsBootOptionsLib|SiliciumPkg/Library/MsBootOptionsLib/MsBootOptionsLib.inf
-  PlatformBootManagerLib|SiliciumPkg/Library/PlatformBootManagerLib/PlatformBootManagerLib.inf
+  DeviceBootManagerLib|SiliciumNullPkg/Library/PlatformBootManagerLibNull/PlatformBootManagerLibNull.inf
+  PlatformBootManagerLib|SiliciumPkg/Library/BootManagerLib/BootManagerLib.inf
+  PlatformBootOptionsLib|SiliciumNullPkg/Library/PlatformBootOptionsLibNull/PlatformBootOptionsLibNull.inf
   UefiBootManagerLib|MdeModulePkg/Library/UefiBootManagerLib/UefiBootManagerLib.inf
   MsBootPolicyLib|SiliciumPkg/Library/MsBootPolicyLib/MsBootPolicyLib.inf
   MsBootManagerSettingsLib|PcBdsPkg/Library/BootManagerSettingsDxeLibNull/BootManagerSettingsDxeLibNull.inf
@@ -234,6 +246,11 @@
   MsAltBootLib|OemPkg/Library/MsAltBootLib/MsAltBootLib.inf
   HiiLib|MdeModulePkg/Library/UefiHiiLib/UefiHiiLib.inf
   UefiHiiServicesLib|MdeModulePkg/Library/UefiHiiServicesLib/UefiHiiServicesLib.inf
+
+  #
+  # SMBIOS Libraries
+  #
+  SmBiosTableLib|SiliciumNullPkg/Library/SmBiosTableLibNull/SmBiosTableLibNull.inf
 
   #
   # Storage Libraries
@@ -389,7 +406,10 @@
   # Runtime Services
   #
   MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
-  MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
+  MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf {
+    <PcdsFixedAtBuild>
+      gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask|0x00
+  }
   MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf
   MdeModulePkg/Universal/ResetSystemRuntimeDxe/ResetSystemRuntimeDxe.inf
@@ -408,7 +428,6 @@
       NULL|SecurityPkg/Library/DxeImageVerificationLib/DxeImageVerificationLib.inf
 !endif
   }
-  MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
   MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
   MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf
 
@@ -465,6 +484,12 @@
   SiliciumPkg/Drivers/RamManagerDxe/RamManagerDxe.inf
 
   #
+  # SMBIOS
+  #
+  MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
+  SiliciumPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
+
+  #
   # ACPI
   #
   MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
@@ -475,3 +500,9 @@
   # Device Tree
   #
   EmbeddedPkg/Drivers/DtPlatformDxe/DtPlatformDxe.inf
+
+  #
+  # UEFI Applications
+  #
+  MdeModulePkg/Application/BootManagerMenuApp/BootManagerMenuApp.inf
+  SiliciumPkg/Applications/UFPLoader/UFPLoader.inf

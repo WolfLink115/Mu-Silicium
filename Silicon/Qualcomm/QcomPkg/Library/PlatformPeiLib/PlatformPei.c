@@ -7,140 +7,17 @@
 
 #include <Library/PcdLib.h>
 #include <Library/DebugLib.h>
-#include <Library/ConfigurationMapLib.h>
-#include <Library/ConfigurationMapHelperLib.h>
+#include <Library/MemoryAllocationLib.h>
 #include <Library/MemoryMapHelperLib.h>
-#include <Library/SerialPortLib.h>
+#include <Library/PrintLib.h>
 #include <Library/HobLib.h>
 
-#include "EFIUefiConfig.h"
-#include "EFISerialPort.h"
-#include "EFIShim.h"
+#include <Protocol/EFIKernelInterface.h>
 
-STATIC
-EFI_STATUS
-LocateConfigurationEntryString (
-  IN  CHAR8 *EntryName,
-  OUT CHAR8 *EntryValue,
-  IN  UINTN *EntryValueLength)
-{
-  // Verify Parameters
-  if (EntryName == NULL || EntryValue == NULL || EntryValueLength == NULL) {
-    return EFI_INVALID_PARAMETER;
-  }
+#include "ShimLibraries/EFIShim.h"
+#include "Include/FvList.h"
 
-  // Get Platform Type
-  CHAR8 *PlatformType = FixedPcdGetPtr (PcdPlatformType);
-
-  // Verify Platform Type
-  ASSERT (PlatformType != "NULL");
-
-  // Compare Entry Names
-  if (!AsciiStriCmp (EntryName, "OsTypeString")) {
-    // Convert Entry Value to String
-    AsciiStrCpyS (EntryValue, *EntryValueLength, PlatformType);
-
-    return EFI_SUCCESS;
-  }
-
-  return EFI_NOT_FOUND;
-}
-
-STATIC
-UINTN
-SerialPortFlush ()
-{
-  return EFI_SUCCESS;
-}
-
-STATIC
-UINTN
-SerialPortControl (
-  IN UINTN Arg,
-  IN UINTN Param)
-{
-  return EFI_SUCCESS;
-}
-
-STATIC
-UINTN
-SerialPortDrain ()
-{
-  return EFI_SUCCESS;
-}
-
-//
-// UEFI Config Library
-//
-EFI_UEFI_CONFIG_LIBRARY
-ConfigLib = {
-  0x10002,
-  LocateMemoryRegionByName,
-  LocateConfigurationEntryString,
-  LocateConfigurationEntry32,
-  LocateConfigurationEntry64, 
-  LocateMemoryRegionByAddress
-};
-
-//
-// Serial Port Library
-//
-EFI_SERIAL_PORT_LIBRARY
-SioLib = {
-  0x10001,
-  SerialPortRead,
-  SerialPortWrite,
-  SerialPortPoll,
-  SerialPortDrain,
-  SerialPortFlush,
-  SerialPortControl,
-  SerialPortSetAttributes
-};
-
-STATIC
-EFI_STATUS
-ShimInstallLib (
-  IN CHAR8  *LibName,
-  IN UINT32  LibVersion,
-  IN VOID   *LibIntf)
-{
-  return EFI_SUCCESS;
-}
-
-EFI_SHIM_LIBRARY_INSTANCE_DATA
-gShimLibraryInstanceData[] = {
-  // Library Instance Name, Library Instance Pointer
-  {"UEFI Config Lib", &ConfigLib},
-  {"SerialPort Lib",  &SioLib}
-};
-
-STATIC
-EFI_STATUS
-ShimLoadLib (
-  IN  CHAR8   *LibName,
-  IN  UINT32   LibVersion,
-  OUT VOID   **LibIntf)
-{
-  // Very Parameters
-  if (LibName == NULL || LibIntf == NULL) {
-    return EFI_INVALID_PARAMETER;
-  }
-
-  // Go thru each Shim Library Instance
-  for (UINT8 i = 0; i < ARRAY_SIZE (gShimLibraryInstanceData); i++) {
-    // Compare Library Instance Names
-    if (AsciiStriCmp (LibName, gShimLibraryInstanceData[i].LibName)) {
-      continue;
-    }
-
-    // Pass Library Instance
-    *LibIntf = gShimLibraryInstanceData[i].LibIntf;
-
-    return EFI_SUCCESS;
-  }
-
-  return EFI_NOT_FOUND;
-}
+#include "PlatformPei.h"
 
 //
 // Shim Library Loader
@@ -152,9 +29,51 @@ ShLibraryLoader = {
   ShimLoadLib
 };
 
+UINTN*
+CreateFvList (IN EFI_KERNEL_PROTOCOL *SchedulerProtocol)
+{
+  EFI_STATUS  Status;
+  UINTN      *FvListAddr;
+
+  // Allocate Memory
+  FvListAddr = AllocateZeroPool (FV_LIST_STRUCTURE_SIZE * MAX_FV_ENTRIES);
+  if (FvListAddr == NULL) {
+    DEBUG ((EFI_D_ERROR, "%a: Failed to Allocate Memory for FV List!\n", __FUNCTION__));
+    goto exit;
+  }
+
+  // Go thru each FV Entry
+  for (UINT8 i = 0; i < MAX_FV_ENTRIES; i++) {
+    LockHandle *FvEntryHandle;
+    CHAR8       FvEntryName[16];
+
+    // Set FV Entry Name
+    AsciiSPrint (FvEntryName, ARRAY_SIZE (FvEntryName), "FVLCK%u", i);
+
+    // Init FV Entry Lock
+    Status = SchedulerProtocol->Lock->InitLock (FvEntryName, &FvEntryHandle);
+    if (EFI_ERROR (Status)) {
+      DEBUG ((EFI_D_ERROR, "%a: Failed to Init FV Entry %u Lock! Status = %r\n", __FUNCTION__, i, Status));
+      goto exit;
+    }
+
+    // Add FV Entry Lock Handle
+    FV_LIST_LOCK_HANDLE (FvListAddr, i) = (UINT64)FvEntryHandle;
+  }
+
+  return FvListAddr;
+
+exit:
+  // Free Buffer
+  if (FvListAddr != NULL) {
+    FreePool (FvListAddr);
+  }
+
+  return NULL;
+}
+
 VOID
 BuildXblHobs (
-  IN EFI_PHYSICAL_ADDRESS FvDecompressAddr,
   IN EFI_PHYSICAL_ADDRESS SchedulerInterfaceAddr,
   IN EFI_PHYSICAL_ADDRESS DtbExtensionAddr)
 {
@@ -180,19 +99,25 @@ BuildXblHobs (
   // Build Prodmode HOB
   BuildGuidDataHob (&gEfiProdmodeHobGuid, &Prodmode, sizeof (Prodmode));
 
-  // Build FV Decompress HOB
-  if (FvDecompressAddr) {
-    BuildGuidDataHob (&gFvDecompressHobGuid, &FvDecompressAddr, sizeof (FvDecompressAddr));
-  }
-
-  // Build Scheduler Interface HOB
+  // Check Scheduler Address
   if (SchedulerInterfaceAddr) {
+    // Build Scheduler Interface HOB
     BuildGuidDataHob (&gEfiSchedulerInterfaceHobGuid, &SchedulerInterfaceAddr, sizeof (SchedulerInterfaceAddr));
+
+    // Get Scheduler Interface Protocol
+    EFI_KERNEL_PROTOCOL *SchedulerProtocol = (EFI_KERNEL_PROTOCOL *)SchedulerInterfaceAddr;
+
+    // Create FV List
+    UINTN *FvListAddr = CreateFvList (SchedulerProtocol);
+    if (FvListAddr != NULL) {
+      // Build FV List HOB
+      BuildGuidDataHob (&gEfiFvListHobGuid, &FvListAddr, sizeof (FvListAddr));
+    }
   }
 
   // Build DTB Extension HOB
   if (DtbExtensionAddr) {
-    BuildGuidDataHob (&gEfiDtbExtnHobGuid, &DtbExtensionAddr, sizeof (DtbExtensionAddr));
+    BuildGuidDataHob (&gEfiDtbExtensionHobGuid, &DtbExtensionAddr, sizeof (DtbExtensionAddr));
   }
 }
 
@@ -200,16 +125,18 @@ EFI_STATUS
 EFIAPI
 PlatformPeim ()
 {
+  // Set Default Values
+  EFI_PHYSICAL_ADDRESS SchedulerInterfaceAddr = 0;
+  EFI_PHYSICAL_ADDRESS DtbExtensionAddr       = 0;
+
   // Build FV HOB
   BuildFvHob (PcdGet64 (PcdFvBaseAddress), PcdGet32 (PcdFvSize));
 
   // Get XBL HOB Addresses
-  EFI_PHYSICAL_ADDRESS FvDecompressAddr       = FixedPcdGet64 (PcdFvDecompressAddr);
-  EFI_PHYSICAL_ADDRESS SchedulerInterfaceAddr = FixedPcdGet64 (PcdSchedulerInterfaceAddr);
-  EFI_PHYSICAL_ADDRESS DtbExtensionAddr       = FixedPcdGet64 (PcdDtbExtensionAddr);
+  GetXblHobAddresses (&SchedulerInterfaceAddr, &DtbExtensionAddr);
 
   // Build XBL HOBs
-  BuildXblHobs (FvDecompressAddr, SchedulerInterfaceAddr, DtbExtensionAddr);
+  BuildXblHobs (SchedulerInterfaceAddr, DtbExtensionAddr);
 
   return EFI_SUCCESS;
 }

@@ -21,6 +21,12 @@
 
 [PcdsFixedAtBuild]
   #
+  # ACPI
+  #
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x20204F4B4952414D
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x214
+
+  #
   # CPU
   #
   gArmPlatformTokenSpaceGuid.PcdCoreCount|4
@@ -30,7 +36,6 @@
   # GIC
   #
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x50041000
-  gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x50042000
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x50042000
 
   #
@@ -42,39 +47,9 @@
 !elseif $(SOC_TYPE) == 1
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"TM675M-A1"
 !endif
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2100
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x30
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x800
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|1600                               # Incorrect?
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
-
-  #
-  # Clock
-  #
-  gNvidiaPkgTokenSpaceGuid.PcdCGeneralID|0
-  gNvidiaPkgTokenSpaceGuid.PcdMemoryID|1
-  gNvidiaPkgTokenSpaceGuid.PcdPeriphID|2
-  gNvidiaPkgTokenSpaceGuid.PcdAudioID|3
-  gNvidiaPkgTokenSpaceGuid.PcdUsbID|4
-  gNvidiaPkgTokenSpaceGuid.PcdDisplayID|5
-  gNvidiaPkgTokenSpaceGuid.PcdDisplay2ID|0xFF
-  gNvidiaPkgTokenSpaceGuid.PcdXCpuID|6
-  gNvidiaPkgTokenSpaceGuid.PcdEpciID|7
-  gNvidiaPkgTokenSpaceGuid.PcdSfrom32KhzID|8
-  gNvidiaPkgTokenSpaceGuid.PcdDpID|9
-  gNvidiaPkgTokenSpaceGuid.Pcd32KhzID|10
-  gNvidiaPkgTokenSpaceGuid.PcdOscID|11
-  gNvidiaPkgTokenSpaceGuid.PcdClkmID|12
-  gNvidiaPkgTokenSpaceGuid.PcdIDCount|13
 
 [LibraryClasses]
   #
   # SEC Libraries
   #
   PlatformSecLib|MarikoPkg/Library/PlatformSecLib/PlatformSecLib.inf
-
-  #
-  # Custom Libraries
-  #
-  TegraClockLib|MarikoPkg/GPLLibrary/TegraClockLib/TegraClockLib.inf

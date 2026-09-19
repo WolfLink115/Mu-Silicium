@@ -52,7 +52,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy S23+"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"dm2q"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_S23+_dm2q"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy S23+"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy S23+"
 
   #
   # Simple Frame Buffer
@@ -65,13 +65,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703B948
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703B0C8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -83,3 +76,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|dm2qPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #dm2q/AcpiTables.inf

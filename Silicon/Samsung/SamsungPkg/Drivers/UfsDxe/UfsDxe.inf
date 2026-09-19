@@ -26,10 +26,11 @@
   IoLib
   BaseMemoryLib
   MemoryAllocationLib
+  TimerLib
 
 [Protocols]
   gEfiBlockIoProtocolGuid
-  gEfiChipDataProtocolGuid
+  gEfiChipInfoProtocolGuid
 
 [Depex]
   TRUE

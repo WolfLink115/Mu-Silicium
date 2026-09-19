@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Phone 1"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"spacewar"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Phone_1_spacewar"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Phone 1"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Phone 1"
 
   #
   # Simple Frame Buffer
@@ -66,12 +66,10 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37990
 
   #
   # Storage
   #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
   gQcomPkgTokenSpaceGuid.PcdStorageIsUfs3|TRUE
 
 [LibraryClasses]
@@ -84,3 +82,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|spacewarPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  spacewar/AcpiTables.inf

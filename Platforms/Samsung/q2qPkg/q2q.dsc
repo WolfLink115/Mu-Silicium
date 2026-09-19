@@ -50,10 +50,10 @@
   # SMBIOS
   #
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemManufacturer|"Samsung"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy Z Fold 3"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy Z Fold3"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"q2q"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_Z_Fold_3_q2q"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy Z Fold 3"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_Z_Fold3_q2q"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy Z Fold3"
 
   #
   # Simple Frame Buffer
@@ -66,12 +66,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37980
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -83,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|q2qPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  q2q/AcpiTables.inf

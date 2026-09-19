@@ -52,7 +52,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Redmi Note 13 Pro 5G"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"garnet"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"2312DRA50G"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"N16"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"N16"
 
   #
   # Simple Frame Buffer
@@ -65,13 +65,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703C920
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0C8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -83,3 +76,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|garnetPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #garnet/AcpiTables.inf

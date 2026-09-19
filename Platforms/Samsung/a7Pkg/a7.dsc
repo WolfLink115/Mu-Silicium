@@ -36,7 +36,7 @@
   #
   # UEFI Stack
   #
-  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x80005000
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x8F200000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
   #
@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy A7"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"a7"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_A7_a7"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy A7"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy A7"
 
   #
   # Simple Frame Buffer
@@ -67,6 +67,11 @@
   KeypadDeviceLib|a7Pkg/Library/KeypadDeviceLib/KeypadDeviceLib.inf
 
 [Components]
+  #
+  # ACPI Tables
+  #
+  #a7/AcpiTables.inf
+
   #
   # Input
   #

@@ -29,9 +29,14 @@
 
 [PcdsFixedAtBuild]
   #
-  # Platform PEI
+  # ACPI
   #
-  gQcomPkgTokenSpaceGuid.PcdFvDecompressAddr|0xA7044830
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x2020414D494C4150
+!if ($(SOC_TYPE) == 0 || $(SOC_TYPE) == 1)
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x8475
+!elseif $(SOC_TYPE) == 2
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x7475
+!endif
 
   #
   # CPU
@@ -48,31 +53,17 @@
   #
   # SMBIOS
   #
-!if ($(SOC_TYPE) == 0) || ($(SOC_TYPE) == 1)
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 8+ Gen 1"
-!elseif $(SOC_TYPE) == 2
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 7+ Gen 2"
-!endif
+!if ($(SOC_TYPE) == 0 || $(SOC_TYPE) == 1)
 !if $(SOC_TYPE) == 0
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 8+ Gen 1 @ 3.00 GHz"
+!elseif $(SOC_TYPE) == 1
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 8+ Gen 1 @ 3.20 GHz"
+!endif
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8475"
-!elseif $(SOC_TYPE) == 1
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8475-AB"
 !elseif $(SOC_TYPE) == 2
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM7475"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 7+ Gen 2 @ 2.91 GHz"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM7475-AB"
 !endif
-!if $(SOC_TYPE) == 0
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|3200
-!elseif $(SOC_TYPE) == 1
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|3000
-!elseif $(SOC_TYPE) == 2
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2910
-!endif
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x1800
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|3200
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|35
 
 [LibraryClasses]
   #
@@ -84,11 +75,6 @@
   # ACPI Libraries
   #
   AcpiTableUpdateLib|PalimaPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf
-
-  #
-  # Custom Libraries
-  #
-  RFSProtectionLib|PalimaPkg/Library/RFSProtectionLib/RFSProtectionLib.inf
 
 [Components]
   #

@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Moto G30"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"caprip"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Moto_G30_caprip"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Moto G30"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Moto G30"
 
   #
   # Simple Frame Buffer
@@ -60,11 +60,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -75,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|capripPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  caprip/AcpiTables.inf

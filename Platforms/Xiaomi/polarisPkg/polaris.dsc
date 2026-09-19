@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Mi Mix 2S"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"polaris"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Mi_Mix_2S_polaris"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Mi Mix 2S"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Mi Mix 2S"
 
   #
   # Simple Frame Buffer
@@ -60,11 +60,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -75,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|polarisPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  polaris/AcpiTables.inf

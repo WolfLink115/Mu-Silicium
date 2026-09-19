@@ -28,7 +28,7 @@
 
   #
   # 0 = SM8475
-  # 1 = SM8475-AB
+  # 1 = SM8475    (Overclocked)
   # 2 = SM7475-AB
   #
   SOC_TYPE                       = 2
@@ -54,7 +54,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco F5"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"marble"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco_F5_marble"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco F5"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Poco F5"
 
   #
   # Simple Frame Buffer
@@ -67,13 +67,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703C920
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0C8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -85,3 +78,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|marblePkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  marble/AcpiTables.inf

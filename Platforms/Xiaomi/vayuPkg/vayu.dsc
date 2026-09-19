@@ -26,9 +26,9 @@
   USE_CUSTOM_DISPLAY_DRIVER      = 1
 
   #
-  # 0 = SM8150
-  # 1 = SM8150-AB
-  # 2 = SM8150-AC
+  # 0 = SM8150-AB
+  # 1 = SM8150-AC / 855+
+  # 2 = SM8150-AC / 860
   #
   SOC_TYPE                       = 2
 
@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco X3 Pro"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"vayu"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco_X3_Pro_vayu"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco X3 Pro"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Poco X3 Pro"
 
   #
   # Simple Frame Buffer
@@ -67,11 +67,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -82,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|vayuPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  vayu/AcpiTables.inf

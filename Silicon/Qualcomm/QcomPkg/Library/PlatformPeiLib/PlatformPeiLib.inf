@@ -15,6 +15,10 @@
 
 [Sources]
   PlatformPei.c
+  ShimLoader.c
+  UefiConfig.c
+  SerialPort.c
+  XblProtocols.c
 
 [Packages]
   ArmPkg/ArmPkg.dec
@@ -27,23 +31,22 @@
   DebugLib
   ConfigurationMapLib
   ConfigurationMapHelperLib
+  MemoryAllocationLib
   MemoryMapHelperLib
   SerialPortLib
+  PrintLib
   HobLib
 
 [FixedPcd]
   gArmTokenSpaceGuid.PcdFvBaseAddress
   gArmTokenSpaceGuid.PcdFvSize
 
-  gQcomPkgTokenSpaceGuid.PcdFvDecompressAddr
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr
   gQcomPkgTokenSpaceGuid.PcdPlatformType
 
 [Guids]
   gEfiInfoBlkHobGuid
   gEfiShimLibraryHobGuid
-  gFvDecompressHobGuid
+  gEfiFvListHobGuid
   gEfiProdmodeHobGuid
   gEfiSchedulerInterfaceHobGuid
-  gEfiDtbExtnHobGuid
+  gEfiDtbExtensionHobGuid

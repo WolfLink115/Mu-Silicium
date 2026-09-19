@@ -25,18 +25,23 @@
 !include QcomPkg/QcomPkg.dsc.inc
 
 [BuildOptions]
-  *_*_AARCH64_CC_FLAGS = -march=armv9.2-a+crypto+rcpc
+  *_*_AARCH64_CC_FLAGS = -march=armv9.2-a+crypto+rcpc -DSOC_TYPE=$(SOC_TYPE)
 
 [PcdsFixedAtBuild]
   #
-  # Platform PEI
+  # ACPI
   #
-  gQcomPkgTokenSpaceGuid.PcdFvDecompressAddr|0xC6851038
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x4C4150414E41414B
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x8850
 
   #
   # CPU
   #
+!if $(SOC_TYPE) != 1
   gArmPlatformTokenSpaceGuid.PcdCoreCount|8
+!else
+  gArmPlatformTokenSpaceGuid.PcdCoreCount|7
+!endif
   gArmPlatformTokenSpaceGuid.PcdClusterCount|2
 
   #
@@ -48,15 +53,17 @@
   #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 8 Elite Gen 5"
+!if $(SOC_TYPE) != 2
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 8 Elite Gen 5 @ 4.74 GHz"
+!if $(SOC_TYPE) == 0
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8850-AC"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|4600
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x200                                # 2nd Cluster has 0x600
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x2000                               # Unoffical Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|5300
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|35
+!elseif $(SOC_TYPE) == 1
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8850-5-AC"
+!endif
+!else
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 8 Elite Gen 5 @ 4.60 GHz"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM8850-1-AD"
+!endif
 
 [LibraryClasses]
   #

@@ -42,7 +42,7 @@
   #
   # UEFI Stack
   #
-  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0xF4B00000
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0xF4A00000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
   #
@@ -52,7 +52,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy S24"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"e1s"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_S24_e1s"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy S24"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy S24"
 
   #
   # Simple Frame Buffer
@@ -73,6 +73,11 @@
   KeypadDeviceLib|e1sPkg/Library/KeypadDeviceLib/KeypadDeviceLib.inf
 
 [Components]
+  #
+  # ACPI Tables
+  #
+  #e1s/AcpiTables.inf
+
   #
   # Input
   #

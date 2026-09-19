@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"GT NEO 2"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"bitra"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"GT NEO 2"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"GT NEO 2"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"GT NEO 2"
 
   #
   # Simple Frame Buffer
@@ -67,11 +67,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -82,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|bitraPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  bitra/AcpiTables.inf

@@ -21,6 +21,17 @@
 
 [PcdsFixedAtBuild]
   #
+  # ACPI
+  #
+!if $(SOC_TYPE) == 0
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x202038363736544D
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x6768
+!elseif $(SOC_TYPE) == 1
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x205439363736544D
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x6769
+!endif
+
+  #
   # CPU
   #
   gArmPlatformTokenSpaceGuid.PcdCoreCount|8
@@ -31,7 +42,6 @@
   #
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x0C000000
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x0C040000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0C040000
 
   #
   # SMBIOS
@@ -43,13 +53,6 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"MediaTek (TM) Helio G80 @ 2.00 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"MT6769T"
 !endif
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2000
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x40
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x80
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|1800
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|30
 
 [LibraryClasses]
   #
@@ -61,5 +64,6 @@
   # Custom Libraries
   #
   GpioImplLib|MT6768Pkg/Library/GpioImplLib/GpioImplLib.inf
+  ClockImplLib|MT6768Pkg/Library/ClockImplLib/ClockImplLib.inf
   PmicWrapperImplLib|MT6768Pkg/Library/PmicWrapperImplLib/PmicWrapperImplLib.inf
   MsdcImplLib|MT6768Pkg/Library/MsdcImplLib/MsdcImplLib.inf

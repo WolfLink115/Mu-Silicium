@@ -54,7 +54,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"GT Neo6"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"bale_b"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"RMX3852"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"23622"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"23622"
 
   #
   # Simple Frame Buffer
@@ -67,13 +67,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703FD40
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703F0E8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -85,3 +78,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|bale_bPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  bale_b/AcpiTables.inf

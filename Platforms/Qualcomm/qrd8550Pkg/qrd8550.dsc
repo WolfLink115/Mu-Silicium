@@ -52,7 +52,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"QRD8550"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"qrd8550"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"QRD8550"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"QRD8550"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"QRD8550"
 
   #
   # Simple Frame Buffer
@@ -65,13 +65,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703A0C8
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703A948
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -83,3 +76,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|qrd8550Pkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  qrd8550/AcpiTables.inf

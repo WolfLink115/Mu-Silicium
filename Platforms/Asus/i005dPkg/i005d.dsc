@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"ROG Phone 5"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"i005d"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"ROG_Phone_5_i005d"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"ROG Phone 5"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"ROG Phone 5"
 
   #
   # Simple Frame Buffer
@@ -66,12 +66,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37968
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -83,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|i005dPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #i005d/AcpiTables.inf

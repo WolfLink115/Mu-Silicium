@@ -54,7 +54,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Pad 7 Pro"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"muyu"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Pad_7_Pro_muyu"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Pad 7 Pro"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Pad 7 Pro"
 
   #
   # Simple Frame Buffer
@@ -67,13 +67,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703FD38
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703F0E8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -85,3 +78,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|muyuPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #muyu/AcpiTables.inf

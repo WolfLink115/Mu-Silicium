@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco F7"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"onyx"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco_F7_onyx"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco F7"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Poco F7"
 
   #
   # Simple Frame Buffer
@@ -59,13 +59,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703CCE8
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0E8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -77,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|onyxPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #onyx/AcpiTables.inf

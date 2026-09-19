@@ -55,7 +55,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"13s"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"pagani"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"CPH2723"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"24875"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"24875"
 
   #
   # Simple Frame Buffer
@@ -68,13 +68,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0E8
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703CE50
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -86,3 +79,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|paganiPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  #pagani/AcpiTables.inf

@@ -26,9 +26,9 @@
   USE_CUSTOM_DISPLAY_DRIVER      = 0
 
   #
-  # 0 = SM8150
-  # 1 = SM8150-AB
-  # 2 = SM8150-AC
+  # 0 = SM8150-AB
+  # 1 = SM8150-AC / 855+
+  # 2 = SM8150-AC / 860
   #
   SOC_TYPE                       = 0
 
@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Mi 9"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"cepheus"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Mi_9_cepheus"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Mi 9"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Mi 9"
 
   #
   # Simple Frame Buffer
@@ -70,7 +70,6 @@
   #
   # Storage
   #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
   gQcomPkgTokenSpaceGuid.PcdStorageIsUfs3|FALSE
 
 [LibraryClasses]
@@ -83,3 +82,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|cepheusPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  cepheus/AcpiTables.inf

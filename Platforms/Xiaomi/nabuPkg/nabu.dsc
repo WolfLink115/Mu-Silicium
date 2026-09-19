@@ -28,9 +28,9 @@
   USE_CUSTOM_DISPLAY_DRIVER      = 1
 
   #
-  # 0 = SM8150
-  # 1 = SM8150-AB
-  # 2 = SM8150-AC
+  # 0 = SM8150-AB
+  # 1 = SM8150-AC / 855+
+  # 2 = SM8150-AC / 860
   #
   SOC_TYPE                       = 2
 
@@ -55,7 +55,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Pad 5"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"nabu"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"21051182G"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"K82"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"K82"
 
   #
   # Simple Frame Buffer
@@ -69,11 +69,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -84,3 +79,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|nabuPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  nabu/AcpiTables.inf

@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy Tab S8+ 5G"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"gts8p"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_Tab_S8+_5G_gts8p"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy Tab S8+ 5G"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy Tab S8+ 5G"
 
   #
   # Simple Frame Buffer
@@ -59,13 +59,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"WP"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703B920
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703B0C8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
 
 [LibraryClasses]
   #
@@ -77,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|gts8pPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  gts8p/AcpiTables.inf

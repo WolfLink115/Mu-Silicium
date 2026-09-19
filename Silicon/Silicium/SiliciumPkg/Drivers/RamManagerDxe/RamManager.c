@@ -31,11 +31,11 @@
 **/
 
 #include <Library/DebugLib.h>
-#include <Library/DxeServicesTableLib.h>
+#include <Library/MemoryAllocationHelperLib.h>
 #include <Library/UefiBootServicesTableLib.h>
+#include <Library/EfiMemoryMapUtilsLib.h>
 #include <Library/MemoryAllocationLib.h>
 #include <Library/RamManagerLib.h>
-#include <Library/ArmMmuLib.h>
 #include <Library/SortLib.h>
 
 //
@@ -46,37 +46,20 @@ STATIC UINTN                  EfiMemoryMapSize = 0;
 STATIC UINTN                  DescriptorSize   = 0;
 
 VOID
-MapRamRange (
+HandleRamRange (
   IN EFI_PHYSICAL_ADDRESS Base,
   IN UINT64               Length)
 {
   EFI_STATUS Status;
 
-  // Add new Memory Space
-  Status = gDS->AddMemorySpace (EfiGcdMemoryTypeSystemMemory, Base, Length, 0xF);
+  // Map RAM Range
+  Status = MapMemoryRegion (Base, Length, EfiConventionalMemory);
   if (EFI_ERROR (Status)) {
-    DEBUG ((EFI_D_ERROR, "Failed to add new Memory Space! Status = %r\n", Status));
-    DEBUG ((EFI_D_ERROR, "Affected RAM Range: 0x%llx - 0x%llx\n", Base, Length));
+    DEBUG ((EFI_D_ERROR, "Failed to Map RAM Range: 0x%llx - 0x%llx! Status = %r\n", Base, Length, Status));
     return;
   }
 
-  // Set Memory Attributes
-  Status = ArmSetMemoryAttributes (Base, Length, ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK, 0);
-  if (EFI_ERROR (Status)) {
-    DEBUG ((EFI_D_ERROR, "Failed to Set Memory Attributes! Status = %r\n", Status));
-    DEBUG ((EFI_D_ERROR, "Affected RAM Range: 0x%llx - 0x%llx\n", Base, Length));
-    return;
-  }
-
-  // Set Memory Space Attributes
-  Status = gDS->SetMemorySpaceAttributes (Base, Length, EFI_MEMORY_WB);
-  if (EFI_ERROR (Status)) {
-    DEBUG ((EFI_D_ERROR, "Failed to Set Memory Space Attributes! Status = %r\n", Status));
-    DEBUG ((EFI_D_ERROR, "Affected RAM Range: 0x%llx - 0x%llx\n", Base, Length));
-    return;
-  }
-
-  // Show Progress
+  // Show Mapped RAM Range
   DEBUG ((EFI_D_WARN, "Successfully Mapped RAM Range: 0x%llx - 0x%llx\n", Base, Length));
 }
 
@@ -89,9 +72,9 @@ ParseMemoryRange (
   EFI_PHYSICAL_ADDRESS CurrentRangeBase = RangeBase;
 
   // Go thru each Memory Map Region
-  for (UINT16 i = 0; i < EfiMemoryMapSize / DescriptorSize; i++) {
+  for (UINT16 i = 0; i < MEMORY_DESCRIPTOR_LIST_SIZE (EfiMemoryMapSize, DescriptorSize); i++) {
     // Get new Memory Descriptor
-    EFI_MEMORY_DESCRIPTOR *Descriptor = (EFI_MEMORY_DESCRIPTOR *)((UINT8 *)EfiMemoryMap + (i * DescriptorSize));
+    EFI_MEMORY_DESCRIPTOR *Descriptor = GET_MEMORY_DESCRIPTOR (EfiMemoryMap, i, DescriptorSize);
 
     // Save Memory Region Details
     EFI_PHYSICAL_ADDRESS RegionBase = Descriptor->PhysicalStart;
@@ -109,11 +92,8 @@ ParseMemoryRange (
 
     // Check Memory Region Base
     if (RegionBase > CurrentRangeBase) {
-      // Set new RAM Range Length
-      UINT64 RamChunkLength = RegionBase - CurrentRangeBase;
-
-      // Map RAM Range
-      MapRamRange (CurrentRangeBase, RamChunkLength);
+      // Handle Free Memory Space
+      HandleRamRange (CurrentRangeBase, RegionBase - CurrentRangeBase);
     }
 
     // Set new Memory Range Base
@@ -124,11 +104,8 @@ ParseMemoryRange (
 
   // Check Current Memory Range Base
   if (CurrentRangeBase < RangeEnd) {
-    // Set new RAM Range Length
-    UINT64 RamChunkLength = RangeEnd - CurrentRangeBase;
-
-    // Map RAM Range
-    MapRamRange (CurrentRangeBase, RamChunkLength);
+    // Handle Free Memory Space
+    HandleRamRange (CurrentRangeBase, RangeEnd - CurrentRangeBase);
   }
 }
 
@@ -227,8 +204,8 @@ ManageRam (
   }
 
   // Sort Memory Map & Memory Ranges
-  PerformQuickSort (EfiMemoryMap, EfiMemoryMapSize / DescriptorSize, DescriptorSize,            CompareMemoryRegions);
-  PerformQuickSort (MemoryRange,  MemoryRangeCount,                  sizeof (EFI_MEMORY_RANGE), CompareMemoryRanges);
+  PerformQuickSort (EfiMemoryMap, MEMORY_DESCRIPTOR_LIST_SIZE (EfiMemoryMapSize, DescriptorSize), DescriptorSize,            CompareMemoryRegions);
+  PerformQuickSort (MemoryRange,  MemoryRangeCount,                                               sizeof (EFI_MEMORY_RANGE), CompareMemoryRanges);
 
   // Go thru each Memory Range
   for (UINT8 i = 0; i < MemoryRangeCount; i++) {

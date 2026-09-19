@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy A52s 5G"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"a52sxq"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Galaxy_A52s_5G_a52sxq"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Galaxy A52s 5G"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Galaxy A52s 5G"
 
   #
   # Simple Frame Buffer
@@ -66,12 +66,10 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0x9FC37980
 
   #
   # Storage
   #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
   gQcomPkgTokenSpaceGuid.PcdStorageIsUfs3|FALSE
 
 [LibraryClasses]
@@ -84,3 +82,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|a52sxqPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  a52sxq/AcpiTables.inf

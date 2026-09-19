@@ -29,9 +29,10 @@
 
 [PcdsFixedAtBuild]
   #
-  # Platform PEI
+  # ACPI
   #
-  gQcomPkgTokenSpaceGuid.PcdFvDecompressAddr|0x9FC403C8
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x2020534F52444543
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x7350
 
   #
   # CPU
@@ -46,17 +47,15 @@
   gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x17A60000
 
   #
+  # Shared RFS Area
+  #
+  gQcomPkgTokenSpaceGuid.PcdDestinationVmCount|3
+
+  #
   # SMBIOS
   #
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 780G"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Snapdragon (TM) 780G @ 2.40 GHz"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"SM7350"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|2500
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x80
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|3200
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|35
 
 [LibraryClasses]
   #
@@ -68,8 +67,3 @@
   # ACPI Libraries
   #
   AcpiTableUpdateLib|CedrosPkg/Library/AcpiTableUpdateLib/AcpiTableUpdateLib.inf
-
-  #
-  # Custom Libraries
-  #
-  RFSProtectionLib|CedrosPkg/Library/RFSProtectionLib/RFSProtectionLib.inf

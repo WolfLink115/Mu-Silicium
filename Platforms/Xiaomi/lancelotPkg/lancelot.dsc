@@ -42,7 +42,7 @@
   #
   # UEFI Stack
   #
-  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x40001000
+  gArmPlatformTokenSpaceGuid.PcdCPUCoresStackBase|0x40000000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x40000
 
   #
@@ -52,7 +52,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Redmi 9"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"lancelot"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Redmi_9_lancelot"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Redmi 9"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Redmi 9"
 
   #
   # Simple Frame Buffer
@@ -60,6 +60,11 @@
   gSiliciumPkgTokenSpaceGuid.PcdFrameBufferWidth|1088
   gSiliciumPkgTokenSpaceGuid.PcdFrameBufferHeight|2340
   gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
+
+  #
+  # Storage
+  #
+  gMediaTekPkgTokenSpaceGuid.PcdStorageIsEMMC|TRUE
 
 [LibraryClasses]
   #
@@ -73,6 +78,11 @@
   KeypadDeviceLib|lancelotPkg/Library/KeypadDeviceLib/KeypadDeviceLib.inf
 
 [Components]
+  #
+  # ACPI Tables
+  #
+  lancelot/AcpiTables.inf
+
   #
   # Input
   #

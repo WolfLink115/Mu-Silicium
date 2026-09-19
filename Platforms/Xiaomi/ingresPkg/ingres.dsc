@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco F4 GT"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"ingres"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco_F4_GT_ingres"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco F4 GT"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Poco F4 GT"
 
   #
   # Simple Frame Buffer
@@ -59,13 +59,6 @@
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
-  gQcomPkgTokenSpaceGuid.PcdSchedulerInterfaceAddr|0xA703C920
-  gQcomPkgTokenSpaceGuid.PcdDtbExtensionAddr|0xA703C0C8
-
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
 
 [LibraryClasses]
   #
@@ -77,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|ingresPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  ingres/AcpiTables.inf

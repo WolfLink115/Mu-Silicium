@@ -14,12 +14,23 @@
   #
   USE_PHYSICAL_TIMER                         = 1
 
+  #
+  # KEP
+  #
+  HAS_CNTFRQ_EL0_EMPTY_ERRATA                = 0
+
 !include SamsungPkg/SamsungPkg.dsc.inc
 
 [BuildOptions]
   *_*_AARCH64_CC_FLAGS = -march=armv9.2-a+crypto+rcpc
 
 [PcdsFixedAtBuild]
+  #
+  # ACPI
+  #
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x2035343939453553
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemRevision|0x9945
+
   #
   # CPU
   #
@@ -30,13 +41,14 @@
   # GIC
   #
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x10200000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x10240000
+  gArmTokenSpaceGuid.PcdGicRedistributorsBase|0x10240000
 
   #
-  # DDR Info
+  # RAM Manager
   #
-  gSamsungPkgTokenSpaceGuid.PcdDdrInfoOffset|0x4F000
-  gSamsungPkgTokenSpaceGuid.PcdDdrSizeInfoOffset|0x848
+  gSamsungPkgTokenSpaceGuid.PcdHasSecurePgtbl|TRUE
+  gSamsungPkgTokenSpaceGuid.PcdHasHarx|TRUE
+  gSamsungPkgTokenSpaceGuid.PcdHasDrmPlugin|TRUE
 
   #
   # SMBIOS
@@ -47,17 +59,6 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorModel|"Exynos (TM) 2400e @ 3.11 GHz"
 !endif
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosProcessorPartNumber|"S5E9945"
-!if $(SOC_TYPE) == 0
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|3210
-!elseif $(SOC_TYPE) == 1
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMaxCpuFreq|3110
-!endif
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1InstCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel1DataCacheSize|0x20
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel2CacheSize|0x400
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosLevel3CacheSize|0x2000                              # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemorySpeed|4200                                    # Unofficial Value
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosMemoryType|35
 
 [LibraryClasses]
   #
@@ -66,6 +67,6 @@
   PlatformSecLib|S5E9945Pkg/Library/PlatformSecLib/PlatformSecLib.inf
 
   #
-  # Custom Libraries
+  # IO Libraries
   #
-  GpioBankLib|S5E9945Pkg/Library/GpioBankLib/GpioBankLib.inf
+  GpioLib|S5E9945Pkg/Library/GpioLib/GpioLib.inf

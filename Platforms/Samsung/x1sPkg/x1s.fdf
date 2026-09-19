@@ -82,14 +82,17 @@ READ_LOCK_STATUS   = TRUE
   !include Include/APRIORI.inc
   !include Include/DXE.inc
 
+  # RAM Manager
+  INF SiliciumPkg/Drivers/RamManagerDxe/RamManagerDxe.inf
+
   # SmBios
   INF MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf
-  INF SamsungPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
+  INF SiliciumPkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf
 
   # ACPI
   INF MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
   INF MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
-  !include Include/ACPI.inc
+  INF RuleOverride = ACPITABLE x1s/AcpiTables.inf
 
   # Device Tree
   #INF EmbeddedPkg/Drivers/DtPlatformDxe/DtPlatformDxe.inf

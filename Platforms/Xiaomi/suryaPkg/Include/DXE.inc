@@ -24,9 +24,7 @@
   INF MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
   INF MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf
 
-  INF Binaries/surya/QcomPkg/Drivers/FontDxe/FontDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/EnvDxe/EnvDxe.inf
-  INF Binaries/surya/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.inf
 
   INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
@@ -57,7 +55,6 @@
   INF Binaries/surya/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/UFSDxe/UFSDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/TLMMDxe/TLMMDxe.inf
-  INF Binaries/surya/QcomPkg/Drivers/VibratorDxe/VibratorDxe.inf
 
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/surya/QcomPkg/Drivers/DisplayDxe/DisplayDxe.inf
@@ -91,5 +88,5 @@
 
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
 
-  INF Binaries/surya/QcomPkg/Drivers/PILDxe/PILDxe.inf
+  # INF Binaries/surya/QcomPkg/Drivers/PILDxe/PILDxe.inf
   INF Binaries/surya/QcomPkg/Drivers/ShmBridgeDxe/ShmBridgeDxeLA.inf

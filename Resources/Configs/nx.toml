@@ -1,15 +1,15 @@
 #
-# Boot Shim Configs
+# Device Status
 #
-[boot_shim]
-requires_kernel_header = false
+[status]
+model_count = 4
 
 #
 # UEFI FD Configs
 #
 [uefi_fd]
-fd_base = 0x80000000
-fd_size = 0x200000
+base = 0xAA000000
+size = 0x200000
 
 #
 # Payload Configs

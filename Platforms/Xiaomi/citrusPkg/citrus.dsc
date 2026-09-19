@@ -48,7 +48,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Poco M3"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"citrus"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Poco_M3_citrus"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Poco M3"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Poco M3"
 
   #
   # Simple Frame Buffer
@@ -62,11 +62,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -77,3 +72,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|citrusPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  citrus/AcpiTables.inf

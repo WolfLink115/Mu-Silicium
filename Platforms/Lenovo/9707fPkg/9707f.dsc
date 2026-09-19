@@ -53,7 +53,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"Legion Tab Y700"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"9707f"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"Legion_Tab_Y700_9707f"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"Legion Tab Y700"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"Legion Tab Y700"
 
   #
   # Simple Frame Buffer
@@ -67,11 +67,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|TRUE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -82,3 +77,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|9707fPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  9707f/AcpiTables.inf

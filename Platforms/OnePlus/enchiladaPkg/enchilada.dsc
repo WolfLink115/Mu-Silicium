@@ -46,7 +46,7 @@
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemModel|"6"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"enchilada"
   gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemRetailSku|"A6003"
-  gSiliciumPkgTokenSpaceGuid.PcdSmbiosBoardModel|"17819"
+  gSiliciumPkgTokenSpaceGuid.PcdSmbiosSystemBoardModel|"17819"
 
   #
   # Simple Frame Buffer
@@ -60,11 +60,6 @@
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"WP"
 
-  #
-  # Storage
-  #
-  gQcomPkgTokenSpaceGuid.PcdInitCardSlot|FALSE
-
 [LibraryClasses]
   #
   # Memory Libraries
@@ -75,3 +70,9 @@
   # QCOM Libraries
   #
   ConfigurationMapLib|enchiladaPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
+
+[Components]
+  #
+  # ACPI Tables
+  #
+  enchilada/AcpiTables.inf
